@@ -92,3 +92,11 @@ For a working public link that runs **real Python on the server**, deploy a **We
 The web service reads Render's `PORT` variable and binds to `0.0.0.0` only in hosted mode. Locally `python3 server.py` still uses `127.0.0.1:8000`. The project uses Python's standard library and needs no pip dependencies. Free web services may sleep after inactivity and have resource limits; the first visitor can experience a startup delay.
 
 **Course transparency:** The project demonstrates genuine Python, but this hosted mode runs Python on a remote server, *not inside the browser*. Do not describe it as in-browser Python unless the Pyodide mode has been separately tested successfully. The original PRD's Pyodide architecture is therefore a documented change.
+
+## Free GitHub Pages publication (no Render or payment)
+
+1. Upload the current project files, including `js/static-recommender.js`, to the GitHub repository root.
+2. Repository **Settings → Pages → Build and deployment → Source: Deploy from a branch → main / (root) → Save**.
+3. Public URL: `https://hadarAmar.github.io/AI-Fashion-Lab/`. Wait for the build and test slides 6, 7 and 10.
+
+**Technical disclosure:** On GitHub Pages the app first attempts genuine in-browser Python using Pyodide from a CDN. If Pyodide fails, the app uses a deterministic JavaScript fallback implementing the same scoring rules from `python/recommender.py`. The UI explicitly labels this mode as JavaScript. Thus a functioning online demo is guaranteed without a paid Python server, but a fallback run does **not** satisfy a strict requirement for executing Python live. Show the local `python3 server.py` version if the professor requires actual Python execution.
