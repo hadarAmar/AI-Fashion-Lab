@@ -240,7 +240,7 @@ if __name__ == "__main__":
 class PythonFashionEngine {
   constructor() {
     this.pyodide = null;
-    this.engineMode = null; // 'pyodide' or 'local-python'
+    this.engineMode = null; // 'pyodide', 'local-python', or 'static-js'
     this.isLoading = false;
     this.isReady = false;
     this.pythonSource = PYTHON_RECOMMENDER_SOURCE;
@@ -335,8 +335,15 @@ class PythonFashionEngine {
     } catch (err) {
       console.error('[PythonEngine] Failed to initialize Pyodide:', err);
       this.isLoading = false;
-      this.updateStatus('טעינת Python נכשלה. להפעלה מקומית השתמשי ב-python3 server.py', 'error');
-      this.showRuntimeError('לא ניתן לטעון Pyodide. כדי להריץ Python אמיתי במחשב, סגרי את השרת הקודם והפעילי: python3 server.py');
+      if (typeof window.fashionStaticRecommend === 'function') {
+        this.engineMode = 'static-js';
+        this.isReady = true;
+        this.updateStatus('חישוב JavaScript בדפדפן (גיבוי ל-Python)', 'ready');
+        await this.runRecommendation();
+      } else {
+        this.updateStatus('מנוע ההמלצות אינו זמין', 'error');
+        this.showRuntimeError('לא ניתן להפעיל את מנוע ההמלצות.');
+      }
     }
   }
 
@@ -483,7 +490,7 @@ class PythonFashionEngine {
     try {
       this.updateStatus('מחשב ציון התאמה בפייתון...', 'computing');
 
-      // Both modes call genuine Python, never a JavaScript imitation.
+      // Native server and Pyodide run Python. Static GitHub Pages fallback mirrors the rules in JavaScript.
       let result;
       if (this.engineMode === 'local-python') {
         const response = await fetch('/api/recommend', {
@@ -494,6 +501,8 @@ class PythonFashionEngine {
         });
         if (!response.ok) throw new Error(`Local Python server returned HTTP ${response.status}`);
         result = await response.json();
+      } else if (this.engineMode === 'static-js') {
+        result = window.fashionStaticRecommend(payload);
       } else {
         const pyFunc = this.pyodide.globals.get('recommend_fashion_look');
         const resultJsonStr = pyFunc(payloadJson);
@@ -501,7 +510,7 @@ class PythonFashionEngine {
       }
       if (result.status !== 'success') throw new Error(result.error || 'Python returned an invalid result');
 
-      this.updateStatus(this.engineMode === 'local-python' ? 'מנוע Python מקומי פעיל' : 'Python / Pyodide פעיל בדפדפן', 'ready');
+      this.updateStatus(this.engineMode === 'local-python' ? 'מנוע Python מקומי פעיל' : this.engineMode === 'static-js' ? 'חישוב JavaScript בדפדפן (גיבוי ל-Python)' : 'Python / Pyodide פעיל בדפדפן', 'ready');
       this.renderRecommendationResult(result);
 
       // Save to global state for Slide 10 Digital Look Passport
