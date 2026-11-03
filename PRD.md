@@ -44,20 +44,36 @@ The project contrasts:
 ## 3. Visual Direction & Aesthetic Guidelines
 
 ### 3.1 Design Philosophy: Luxury Fashion Editorial
-The user experience must feel like a digital luxury fashion magazine rather than a generic slide deck. Layouts prioritize generous negative space (whitespace), refined typography, high-contrast imagery, smooth transitions, and subtle micro-interactions.
+The user experience is designed as an interactive, high-fashion digital editorial publication (comparable to *Vogue International*, *Harper's Bazaar*, and curated Paris/Milan fashion lookbooks). 
+
+Key Visual Pillars:
+1. **Diverse Editorial Layouts:** Rather than a repetitive two-column structure, every slide features a distinct magazine composition (e.g., Asymmetric Cover Spread, Side-by-Side Visual Transformation, Atelier Moodboard Grid, Circular Lifecycle Diagram, Split Console View).
+2. **High-Fashion Imagery & Original Sketches:** Editorial photography, authentic atelier craft imagery, and curated fashion silhouettes combined with subtle champagne gold framing.
+3. **Typography & Breathing Room:** High-contrast display serif typography paired with generous negative whitespace and micro-detailed metadata badges.
+4. **Digestible Storytelling:** Condensing heavy academic text into punchy editorial insights, structured visual callouts, and clear analytical tags.
 
 ### 3.2 Color Palette
 | Token | Name | Hex Code | Usage |
 | :--- | :--- | :--- | :--- |
 | `--bg-ivory` | Cream / Ivory Base | `#FDFBF7` | Primary background across all slides |
-| `--bg-secondary` | Warm Silk Alabaster | `#F6F3EC` | Card backgrounds, side panels, and elevated surfaces |
-| `--accent-champagne` | Champagne Gold | `#C5A059` | Primary accent, active states, borders, highlight badges |
-| `--accent-gold-light` | Pale Champagne Glow | `#EAD8B1` | Subtle glows, active selection outlines, hover states |
-| `--accent-lilac` | Soft Lilac | `#D8CFF2` | Secondary accent, interactive tags, category pills |
-| `--accent-lilac-subtle`| Whispering Lavender | `#F2EEFA` | Subtle button fills, info badges |
-| `--text-primary` | Obsidian Black | `#141414` | Primary titles, body text, high-contrast reading |
-| `--text-muted` | Muted Charcoal | `#63625E` | Subtitles, metadata, captions, footnotes |
-| `--border-subtle` | Fine Editorial Border | `rgba(20, 20, 20, 0.08)` | Dividers, card borders, minimal frames |
+| `--bg-secondary` | Warm Silk Alabaster | `#F7F4ED` | Card backgrounds, elevated surfaces, visual frames |
+| `--accent-gold` | Champagne Gold | `#C5A059` | Primary accent, borders, highlights, brand monogram |
+| `--accent-gold-light` | Pale Champagne Glow | `#E8D8B0` | Hover outlines, active pill backgrounds, luminous accents |
+| `--accent-lilac` | Soft Lilac | `#D8CFF2` | Secondary accent, category tags, interactive borders |
+| `--accent-lilac-subtle`| Whispering Lavender | `#F4F1FA` | Interactive badges, code accents |
+| `--text-noir` | Obsidian Black | `#141414` | Primary titles, bold leads, high-contrast editorial text |
+| `--text-secondary` | Muted Charcoal | `#63625E` | Explanatory copy, captions, footnotes |
+| `--border-subtle` | Fine Editorial Border | `rgba(20, 20, 20, 0.08)` | Dividers, card frames, image containers |
+
+---
+
+## 4. Academic Rigor & Grounded AI Discourse
+
+To maintain university-level academic credibility, the presentation strictly avoids exaggerated marketing claims and unverified statistics:
+- **Virtual Try-On (VTON) Reality Check:** Accurately explains 2D garment re-targeting capabilities while candidly discussing current technical limits in fine fabric drape physics (wrinkles, sheer fabrics, dynamic movement, and extreme body poses).
+- **Intellectual Property & Legal Landscape:** Details the current stance of the US Copyright Office and global authorities regarding the lack of copyright for purely autonomous AI outputs, emphasizing human creative direction.
+- **Ecological Nuance in Fashion Tech:** Analyzes how AI-driven demand forecasting and digital 3D sampling mitigate physical fabric waste, while acknowledging the energy footprint of training/inference data centers and the broader socio-economic drivers of fast-fashion consumption.
+- **Zero Fabricated Citations:** All concepts are grounded in established computer vision, generative AI paradigms, and fashion manufacturing practices without synthetic numbers.
 
 ### 3.3 Typography
 - **Slide Headings & Hero Titles (Latin):** High-fashion editorial display serif:
