@@ -340,23 +340,23 @@
 
                 <!-- Digital Landmark Body-Mapping Pins -->
                 <div class="vton-landmark-hud">
-                  <div class="landmark-node" style="top: 22%; right: 48%;" data-tag="Shoulder: 38.4cm"></div>
-                  <div class="landmark-node" style="top: 36%; right: 53%;" data-tag="Bust: 86.2cm"></div>
-                  <div class="landmark-node" style="top: 48%; right: 49%;" data-tag="Waist: 67.0cm"></div>
-                  <div class="landmark-node" style="top: 60%; right: 47%;" data-tag="Hips: 92.5cm"></div>
+                  <div class="landmark-node" style="top: 22%; right: 48%;" data-tag="Shoulder point (demo)"></div>
+                  <div class="landmark-node" style="top: 36%; right: 53%;" data-tag="Chest point (demo)"></div>
+                  <div class="landmark-node" style="top: 48%; right: 49%;" data-tag="Waist point (demo)"></div>
+                  <div class="landmark-node" style="top: 60%; right: 47%;" data-tag="Hip point (demo)"></div>
                   <div class="landmark-node" style="top: 86%; right: 52%;" data-tag="Floor Hem"></div>
                 </div>
 
                 <!-- Digital Telemetry Badges -->
                 <div class="vton-telemetry-badge">
                   <span>DENSEPOSE 3D MESH</span>
-                  <strong>FIT AFFINITY 98.4%</strong>
+                  <strong>DEMO VISUALIZATION</strong>
                 </div>
 
                 <span class="image-overlay-badge" dir="ltr" style="top: auto; bottom: 3rem;">AI VTON v2.4</span>
 
                 <div class="image-caption">
-                  <span>מיפוי גוף ותנוחה בזמן אמת</span>
+                  <span>המחשה גרפית בלבד — ללא מדידה אמיתית</span>
                   <span dir="ltr">VIRTUAL ATELIER</span>
                 </div>
               </div>
@@ -432,66 +432,96 @@
             <div class="slide-header">
               <span class="slide-tag">07 // Python Recommendation Engine</span>
               <h2 class="slide-title-en" dir="ltr">THE SMART FASHION ENGINE</h2>
-              <p class="slide-subtitle-he">מנוע המלצות שקוף: אלגוריתם פייתון הרץ ישירות בדפדפן</p>
+              <p class="slide-subtitle-he">מנוע המלצות שקוף: אלגוריתם פייתון אמיתי הרץ ישירות בדפדפן (Pyodide WebAssembly)</p>
             </div>
             
-            <div class="layout-code-atelier">
-              <div>
-                <p class="editorial-lead">
-                  במקום "קופסה שחורה" עמומה, המערכת שלנו חושפת את מנגנון החישוב: קוד Python אמיתי שרץ בתוך הדפדפן באמצעות Pyodide (WebAssembly).
-                </p>
-                <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1rem;">
-                  המנוע מקבל את בחירות הסגנון, הצבעוניות והתקציב, ומבצע שקלול רב-קריטריוני שקוף לחלוטין.
-                </p>
+            <div class="layout-python-engine">
+              <!-- Left Column: Preference & Input Console -->
+              <div class="python-console-card">
+                <div class="console-header-row">
+                  <span class="studio-title-badge">PREFERENCE CONSOLE</span>
+                  <span class="pyodide-status loading" id="pyodide-status-badge">טוען סביבת Python WebAssembly...</span>
+                </div>
 
-                <!-- Scoring Metric Mockups -->
-                <div class="scoring-metrics-mock">
-                  <div class="metric-pill">
-                    <span>התאמת סגנון (Style Fit)</span>
-                    <strong>+38 pts</strong>
-                  </div>
-                  <div class="metric-pill">
-                    <span>הרמוניה צבעונית (Color Palette)</span>
-                    <strong>+32 pts</strong>
-                  </div>
-                  <div class="metric-pill">
-                    <span>עמידה בתקציב (Budget Match)</span>
-                    <strong>+20 pts</strong>
-                  </div>
-                  <div class="metric-pill" style="border-color: var(--accent-gold);">
-                    <span>ציון משוקלל סופי</span>
-                    <strong style="color: var(--accent-gold-dark);">90 / 100</strong>
+                <!-- 3D Studio Bridge Bar (Connected directly to Slide 6) -->
+                <div class="selection-bridge-bar">
+                  <span>נתוני גזרה מסטודיו תלת-ממד:</span>
+                  <div class="bridge-tags">
+                    <span class="bridge-tag" id="bridge-tag-color">
+                      <span id="summary-pill-color" style="width: 12px; height: 12px; border-radius: 50%; display: inline-block; background: #C5A059; border: 1px solid rgba(0,0,0,0.2);"></span>
+                      גוון
+                    </span>
+                    <span class="bridge-tag"><strong id="summary-pill-silhouette">ערב זורם</strong></span>
+                    <span class="bridge-tag"><strong id="summary-pill-fabric">משי סאטן</strong></span>
                   </div>
                 </div>
 
-                <div class="reality-check-banner">
-                  <strong>הבחנה אקדמית חיונית:</strong>
-                  מנוע ההמלצות בפרויקט זה מדגים מערכת כללים דטרמיניסטית שקופה (Rule-Based Matrix), בניגוד לרשתות נוירונים עמוקות המניבות תוצאות מורכבות אך נטולות הסברתיות ישירה.
+                <!-- Preference 1: Style Persona -->
+                <div class="py-control-group">
+                  <span class="py-group-label">1. סגנון אופנתי מועדף (Style Persona):</span>
+                  <div class="py-pill-grid">
+                    <button class="py-pill-btn active" data-py-style="classic_couture">קלאסי קוטור (Classic Couture)</button>
+                    <button class="py-pill-btn" data-py-style="minimalist">מינימליזם אורבני (Minimalist)</button>
+                    <button class="py-pill-btn" data-py-style="avantgarde">אוונגרד ופיסול (Avant-Garde)</button>
+                  </div>
                 </div>
+
+                <!-- Preference 2: Target Occasion -->
+                <div class="py-control-group">
+                  <span class="py-group-label">2. אירוע יעד (Target Occasion):</span>
+                  <div class="py-pill-grid">
+                    <button class="py-pill-btn active" data-py-occasion="gala_evening">נשף ערב / גאלה (Gala)</button>
+                    <button class="py-pill-btn" data-py-occasion="cocktail_premiere">פרמיירה / קוקטייל (Premiere)</button>
+                    <button class="py-pill-btn" data-py-occasion="daytime_atelier">אירוע יום / גלריה (Atelier)</button>
+                    <button class="py-pill-btn" data-py-occasion="runway_show">תצוגת מסלול (Runway)</button>
+                  </div>
+                </div>
+
+                <!-- Preference 3: Budget Category -->
+                <div class="py-control-group">
+                  <span class="py-group-label">3. קטגוריית תקציב (Budget Tier):</span>
+                  <div class="py-pill-grid">
+                    <button class="py-pill-btn" data-py-budget="accessible_luxury">Accessible Luxury (יוקרה נגישה)</button>
+                    <button class="py-pill-btn active" data-py-budget="high_couture">High Couture (אופנה עילית)</button>
+                    <button class="py-pill-btn" data-py-budget="collector_edition">Collector's Edition (פריט אספנות)</button>
+                  </div>
+                </div>
+
+                <!-- Action Button -->
+                <button class="btn-nav primary" id="btn-recalculate-python" style="width: 100%; justify-content: center; margin-top: 0.25rem;">
+                  <span>חשב המלצה מחדש בפייתון</span>
+                  <span>&#8634;</span>
+                </button>
               </div>
 
-              <!-- Interactive Code Notebook Mockup -->
-              <div class="code-notebook-frame">
-                <div class="notebook-header">
-                  <div class="notebook-tabs">
-                    <span class="notebook-tab">recommender.py</span>
+              <!-- Right Column: Recommendation Results & Source Code -->
+              <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                <!-- Live Python Scoring Output Card -->
+                <div id="python-result-container">
+                  <div class="recommendation-result-card" style="text-align: center; padding: 2rem;">
+                    <span class="score-label">מאתחל מנוע המלצות בפייתון...</span>
                   </div>
-                  <span class="notebook-status">Python 3.11 &bull; Pyodide WASM</span>
                 </div>
-                <div class="notebook-body">
-<pre><code><span class="code-comment"># AI Fashion Lab - Transparent Affinity Scorer</span>
-<span class="code-keyword">def</span> <span class="code-fn">evaluate_look</span>(profile, garment):
-    <span class="code-comment"># 1. Style Affinity Weight (40%)</span>
-    style_score = <span class="code-num">0.40</span> * match_style(profile.aesthetic, garment.style)
-    
-    <span class="code-comment"># 2. Color Palette Harmony (35%)</span>
-    color_score = <span class="code-num">0.35</span> * color_harmony(profile.palette, garment.tones)
-    
-    <span class="code-comment"># 3. Budget Alignment (25%)</span>
-    budget_score = <span class="code-num">0.25</span> * compute_tier(profile.budget, garment.price)
-    
-    total = style_score + color_score + budget_score
-    <span class="code-keyword">return</span> round(total * <span class="code-num">100</span>, <span class="code-num">1</span>)</code></pre>
+
+                <!-- Academic Transparency & Rule-Based Simulation Callout -->
+                <div class="educational-simulation-callout">
+                  <strong>שקיפות אלגוריתמית וסימולציה חינוכית:</strong>
+                  מנוע ההמלצות בפרויקט זה מדגים מערכת שקלול דטרמיניסטית שקופה (Rule-Based Matrix) שנכתבה בפייתון אמיתי ורצה ב-WebAssembly. להבדיל ממודלי למידה עמוקה הפועלים כ"קופסה שחורה", כאן כל נקודת ציון מוסברת ומנומקת באופן שקוף ומדויק.
+                </div>
+
+                <!-- Expandable Python Code Frame -->
+                <div>
+                  <div class="code-expand-row">
+                    <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);">python/recommender.py (Pyodide Execution)</span>
+                    <button class="btn-toggle-code" id="btn-toggle-code">▼ הצג קוד פייתון אמיתי (View Python Source)</button>
+                  </div>
+                  <div class="code-viewer-frame collapsed" id="python-code-frame" style="display: none;">
+                    <div class="code-viewer-header">
+                      <span>PYTHON WASM RUNTIME</span>
+                      <span dir="ltr">def recommend_fashion_look()</span>
+                    </div>
+                    <pre class="code-viewer-body"><code id="python-code-viewer"># טוען קוד...</code></pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -612,30 +642,15 @@
                   סיכום תובנות העיצוב והסטיילינג הדיגיטלי
                 </p>
 
-                <div class="passport-meta-list">
-                  <div class="passport-meta-item">
-                    <span>סגנון נבחר:</span>
-                    <span>Minimalist Couture</span>
-                  </div>
-                  <div class="passport-meta-item">
-                    <span>פלטת צבעים:</span>
-                    <span>Champagne &amp; Soft Lilac</span>
-                  </div>
-                  <div class="passport-meta-item">
-                    <span>ציון התאמה אלגוריתמי:</span>
-                    <span style="color: var(--accent-gold-dark);">90 / 100</span>
-                  </div>
-                  <div class="passport-meta-item">
-                    <span>טביעת רגל ירוקה:</span>
-                    <span>Zero Physical Sampling</span>
-                  </div>
+                <div class="passport-preview" id="passport-preview" aria-live="polite">
+                  <p class="passport-empty">עדיין אין לוק אישי להצגה. עצבי בגד בשקופית 6 והפעילי את מנוע ההמלצות בשקופית 7.</p>
+                  <button type="button" class="btn-nav primary passport-action" id="passport-go-engine">למנוע ההמלצות ←</button>
                 </div>
-
-                <div class="pill-list" style="margin-top: 0.5rem;">
-                  <span class="pill active">&#10003; שלב 1: עיצוב קונספטואלי</span>
-                  <span class="pill active">&#10003; שלב 2: סטודיו 3D אינטראקטיבי</span>
-                  <span class="pill">&#9711; שלב 3: מנוע פייתון מלא</span>
+                <div class="passport-controls">
+                  <button type="button" class="btn-nav" id="passport-print" disabled>הדפסת כרטיס הלוק</button>
+                  <button type="button" class="btn-nav" id="passport-restart">התחלה מחדש</button>
                 </div>
+                <p class="passport-disclaimer">התוצאה היא סימולציה לימודית המבוססת על כללים ב-Python, ולא המלצה של מודל AI מאומן או מדידת התאמה אמיתית.</p>
               </div>
 
               <!-- Closing Editorial Reflection -->
@@ -699,6 +714,8 @@
   <!-- Application Scripts -->
   <script src="js/slider.js"></script>
   <script src="js/three-studio.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/python-engine.js?v=4.2-passport-fix"></script>
+  <script src="js/app.js?v=4.2-passport-fix"></script>
+  <script src="js/passport.js?v=4.2-passport-fix"></script>
 </body>
 </html>

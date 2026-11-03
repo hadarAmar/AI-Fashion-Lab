@@ -382,3 +382,14 @@ A visible indicator badge (`[מערכת סימולציה לימודית]` / `[Ed
 - [x] **Clarity of AI vs. Simulation:** Visible educational badge distinguishing real GenAI models from the rule-based simulation.
 - [x] **Responsive Design:** Seamless experience across desktop (primary) and mobile/tablet devices.
 - [ ] **Documentation:** Thorough `README.md` containing prompt history, screenshots, and setup instructions.
+
+
+## Deployment implementation addendum (2026-11-03)
+
+Due to reproducible Pyodide initialization failures in the development environment,
+the reliable **public demo** uses native server-side Python via `server.py` hosted
+on Render. This is a documented divergence from the preferred browser-embedded
+Pyodide architecture. The same `python/recommender.py` runs in both local and
+hosted native Python mode; Pyodide is an unverified fallback on static hosting.
+The final presentation must accurately label the active execution mode and must
+not claim the server-based engine runs inside the visitor's browser.

@@ -1,6 +1,6 @@
 /* ==========================================================================
    AI FASHION LAB - Luxury Fashion Editorial Stylesheet
-   Milestone 2: Three.js 3D Garment Studio & High-Tech Virtual Fitting HUD
+   Milestone 3: Pyodide Python Engine & Interactive Scoring Studio
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -401,7 +401,6 @@ html, body {
   position: relative;
 }
 
-/* Scanning Laser Animation */
 .vton-scan-laser {
   position: absolute;
   inset-inline: 0;
@@ -419,7 +418,6 @@ html, body {
   100% { top: 92%; opacity: 0.35; }
 }
 
-/* Digital Landmark Pins */
 .vton-landmark-hud {
   position: absolute;
   inset: 0;
@@ -556,7 +554,6 @@ html, body {
   display: block;
 }
 
-/* WebGL Fallback Card */
 .webgl-fallback-card {
   width: 100%;
   height: 100%;
@@ -576,7 +573,6 @@ html, body {
   font-size: 2.2rem;
 }
 
-/* 3D Studio Floating Control Dock */
 .studio-dock {
   width: 100%;
   display: flex;
@@ -636,7 +632,6 @@ html, body {
   font-weight: 600;
 }
 
-/* Swatches */
 .swatch-btn {
   width: 22px;
   height: 22px;
@@ -672,7 +667,348 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   9. Slide Layouts (1, 2, 3, 4, 7, 8, 9, 10)
+   9. SLIDE 7: Pyodide In-Browser Python Engine Styles
+   -------------------------------------------------------------------------- */
+.layout-python-engine {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+/* Preferences Console */
+.python-console-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 8px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  box-shadow: var(--shadow-editorial);
+}
+
+.console-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-fine);
+  padding-bottom: 0.75rem;
+}
+
+.pyodide-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.pyodide-status.ready {
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--accent-gold-dark);
+  border: 1px solid var(--accent-gold);
+}
+
+.pyodide-status.loading, .pyodide-status.computing {
+  background: var(--accent-lilac-light);
+  color: var(--accent-lilac-dark);
+  border: 1px solid var(--accent-lilac);
+  animation: pulseStatus 1.5s infinite;
+}
+
+.pyodide-status.error {
+  background: #FDF0ED;
+  color: #B43422;
+  border: 1px solid #E4796B;
+}
+
+@keyframes pulseStatus {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* 3D Bridge Bar (Imports selections from Slide 6) */
+.selection-bridge-bar {
+  background: var(--bg-alabaster);
+  border: 1px dashed var(--border-gold);
+  border-radius: 6px;
+  padding: 0.65rem 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.bridge-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bridge-tag {
+  background: var(--bg-card);
+  border: 1px solid var(--border-fine);
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-noir);
+  font-weight: 500;
+}
+
+.py-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.py-group-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+.py-pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.py-pill-btn {
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-fine);
+  background: var(--bg-card);
+  font-family: var(--font-hebrew);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.py-pill-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+.py-pill-btn.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Recommendation Result Display */
+.recommendation-result-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-editorial);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-lilac));
+}
+
+.rec-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rec-title-he {
+  font-family: var(--font-editorial);
+  font-size: 1.45rem;
+  color: var(--text-noir);
+  margin-top: 0.2rem;
+  line-height: 1.2;
+}
+
+.rec-title-en {
+  font-family: var(--font-editorial);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rec-score-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  background: var(--bg-alabaster);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.2);
+  flex-shrink: 0;
+}
+
+.score-number {
+  font-family: var(--font-editorial);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-gold-dark);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.rec-desc-he {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Transparent Breakdown Grid */
+.score-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.breakdown-pill {
+  background: var(--bg-alabaster);
+  border: 1px solid var(--border-fine);
+  border-radius: 5px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pill-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+.pill-head strong {
+  font-family: var(--font-mono);
+  color: var(--accent-gold-dark);
+}
+
+.pill-reason {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.rec-styling-tip {
+  background: rgba(216, 207, 242, 0.22);
+  border-inline-start: 3px solid var(--accent-lilac-dark);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Expandable Code Frame */
+.code-expand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.btn-toggle-code {
+  background: none;
+  border: 1px solid var(--border-fine);
+  border-radius: 4px;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-toggle-code:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+.code-viewer-frame {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  margin-top: 0.65rem;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.code-viewer-header {
+  padding: 0.5rem 0.85rem;
+  background: #1F1F1F;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #C5A059;
+}
+
+.code-viewer-body {
+  padding: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #E2E0DB;
+  line-height: 1.5;
+  max-height: 220px;
+  overflow-y: auto;
+  direction: ltr;
+  text-align: left;
+}
+
+/* Educational Callout */
+.educational-simulation-callout {
+  background: rgba(253, 251, 247, 0.95);
+  border: 1px solid var(--border-gold);
+  border-inline-start: 4px solid var(--accent-gold-dark);
+  border-radius: 4px;
+  padding: 0.85rem 1.1rem;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.educational-simulation-callout strong {
+  color: var(--accent-gold-dark);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Slide Layouts (1, 2, 3, 4, 8, 9, 10)
    -------------------------------------------------------------------------- */
 /* --- SLIDE 1: Hero Cover --- */
 .layout-hero-cover {
@@ -914,167 +1250,6 @@ html, body {
   box-shadow: var(--shadow-editorial);
 }
 
-/* --- SLIDE 5: VTON 3-Stage Pipeline --- */
-.layout-vton {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 2.25rem;
-  align-items: start;
-}
-
-.vton-pipeline-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 0.85rem;
-}
-
-.step-card {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 0.9rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-fine);
-  border-radius: 6px;
-  padding: 0.8rem 1rem;
-  align-items: center;
-  transition: all var(--transition-fast);
-}
-
-.step-card:hover {
-  border-color: var(--border-gold);
-  transform: translateX(-3px);
-}
-
-.step-number {
-  font-family: var(--font-editorial);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--accent-gold-dark);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent-gold-glow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.step-info h4 {
-  font-size: 0.95rem;
-  color: var(--text-noir);
-  margin-bottom: 0.15rem;
-}
-
-.step-info p {
-  font-size: 0.84rem;
-  color: var(--text-secondary);
-}
-
-.reality-check-banner {
-  background: rgba(253, 251, 247, 0.95);
-  border: 1px solid var(--border-gold);
-  border-inline-start: 4px solid var(--accent-gold-dark);
-  border-radius: 4px;
-  padding: 0.85rem 1.1rem;
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  line-height: 1.55;
-  color: var(--text-primary);
-}
-
-.reality-check-banner strong {
-  color: var(--accent-gold-dark);
-  display: block;
-  margin-bottom: 0.2rem;
-}
-
-/* --- SLIDE 7: Python Code Atelier --- */
-.layout-code-atelier {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 2.25rem;
-  align-items: start;
-}
-
-.code-notebook-frame {
-  background: #141414;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
-  direction: ltr;
-  text-align: left;
-}
-
-.notebook-header {
-  padding: 0.6rem 1rem;
-  background: #1F1F1F;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.notebook-tabs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.notebook-tab {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: #C5A059;
-  background: rgba(197, 160, 89, 0.12);
-  padding: 0.2rem 0.55rem;
-  border-radius: 3px;
-}
-
-.notebook-status {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: #8E8D88;
-}
-
-.notebook-body {
-  padding: 1.15rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: #E2E0DB;
-  line-height: 1.6;
-  overflow-x: auto;
-}
-
-.code-keyword { color: #D8CFF2; font-weight: 600; }
-.code-fn { color: #E8D8B0; }
-.code-str { color: #A8D5BA; }
-.code-comment { color: #73726E; font-style: italic; }
-.code-num { color: #F7A8B8; }
-
-.scoring-metrics-mock {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.7rem;
-  margin-top: 0.85rem;
-}
-
-.metric-pill {
-  background: var(--bg-card);
-  border: 1px solid var(--border-fine);
-  border-radius: 4px;
-  padding: 0.55rem 0.85rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.82rem;
-}
-
-.metric-pill strong {
-  font-family: var(--font-mono);
-  color: var(--accent-gold-dark);
-}
-
 /* --- SLIDE 8: Circular Sustainability --- */
 .layout-sustainability {
   display: flex;
@@ -1218,7 +1393,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   10. Global UI Pills, Badges & Interactive Tags
+   11. Global UI Pills, Badges & Interactive Tags
    -------------------------------------------------------------------------- */
 .pill-list {
   display: flex;
@@ -1250,7 +1425,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   11. Bottom Navigation Bar & Slide Controls
+   12. Bottom Navigation Bar & Slide Controls
    -------------------------------------------------------------------------- */
 .editorial-footer {
   padding: 0.85rem 2.5rem;
@@ -1362,7 +1537,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   12. Responsive Editorial Adjustments
+   13. Responsive Editorial Adjustments
    -------------------------------------------------------------------------- */
 @media (max-width: 1100px) {
   .masthead, .editorial-footer {
@@ -1378,7 +1553,7 @@ html, body {
   .layout-debate,
   .layout-lookbook,
   .layout-vton,
-  .layout-code-atelier,
+  .layout-python-engine,
   .sustainability-split,
   .layout-human-atelier,
   .layout-passport {
@@ -1525,6 +1700,10 @@ html, body {
     gap: 0.35rem !important;
   }
 
+  .score-breakdown-grid {
+    grid-template-columns: 1fr !important;
+  }
+
   .editorial-footer {
     padding: 0.55rem 0.85rem !important;
     flex-wrap: wrap !important;
@@ -1561,8 +1740,29 @@ html, body {
   .sustainability-split {
     grid-template-columns: 1fr !important;
   }
+}
 
-  .scoring-metrics-mock {
-    grid-template-columns: 1fr !important;
-  }
+/* Milestone 4 — personalized look passport */
+.passport-preview { margin-top: 1rem; }
+.passport-empty { padding: 0.85rem 0; color: var(--text-secondary); line-height: 1.65; }
+.passport-controls { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
+.passport-action { margin-top: .55rem; }
+.passport-disclaimer { font-size: .78rem; color: var(--text-secondary); line-height: 1.5; margin-top: 1rem; }
+.passport-result-head { display:flex; align-items:center; justify-content:space-between; gap:.8rem; }
+.passport-look-badge { font-family: var(--font-editorial); letter-spacing:.08em; color:var(--accent-gold-dark); font-size:.92rem; }
+.passport-result-score { font-size:1.8rem; font-family:var(--font-editorial); color:var(--accent-gold-dark); }
+.passport-result-score small { font-size:.9rem; color:var(--text-secondary); }
+.passport-look-title { font-size:1.2rem; margin-top:.3rem; line-height:1.4; }
+.passport-look-english { color:var(--text-secondary); font-family:var(--font-editorial); margin-bottom:.5rem; }
+.passport-color-field { display:inline-flex; align-items:center; gap:.45rem; }
+.passport-color-swatch { display:inline-block; width:1.1rem; height:1.1rem; border:1px solid #999; border-radius:50%; }
+.passport-reason { font-size:.89rem; margin-top:.6rem; line-height:1.5; }
+.passport-engine-label { font-size:.72rem; margin-top:.4rem; color:var(--text-muted); }
+@media print {
+  body { overflow:visible !important; }
+  .masthead, .editorial-footer, .passport-controls { display:none !important; }
+  .app-container, .presentation-stage, .slide-viewport, .slide-deck { height:auto !important; min-height:0 !important; overflow:visible !important; }
+  .slide { display:none !important; }
+  #slide-10 { display:flex !important; position:static !important; opacity:1 !important; visibility:visible !important; transform:none !important; overflow:visible !important; }
+  .passport-card { break-inside:avoid; }
 }
