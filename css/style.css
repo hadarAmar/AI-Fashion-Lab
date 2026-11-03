@@ -1,0 +1,1768 @@
+/* ==========================================================================
+   AI FASHION LAB - Luxury Fashion Editorial Stylesheet
+   Milestone 3: Pyodide Python Engine & Interactive Scoring Studio
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Editorial Color Palette */
+  --bg-ivory: #FDFBF7;
+  --bg-alabaster: #F7F4ED;
+  --bg-card: #FFFFFF;
+  --bg-card-glass: rgba(255, 255, 255, 0.9);
+  --bg-dark-glass: rgba(20, 20, 20, 0.95);
+  
+  --accent-gold: #C5A059;
+  --accent-gold-light: #E8D8B0;
+  --accent-gold-dark: #8F6F30;
+  --accent-gold-glow: rgba(197, 160, 89, 0.16);
+  
+  --accent-lilac: #D8CFF2;
+  --accent-lilac-light: #F4F1FA;
+  --accent-lilac-dark: #6C59A4;
+  --accent-lilac-glow: rgba(216, 207, 242, 0.22);
+  
+  --text-noir: #141414;
+  --text-primary: #21201D;
+  --text-secondary: #575653;
+  --text-muted: #8E8D88;
+  
+  --border-fine: rgba(20, 20, 20, 0.08);
+  --border-gold: rgba(197, 160, 89, 0.35);
+  --border-gold-strong: #C5A059;
+  --border-lilac: rgba(216, 207, 242, 0.6);
+  
+  /* Typography */
+  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-hebrew: 'Assistant', 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+  
+  /* Shadows & Depth */
+  --shadow-editorial: 0 16px 40px -10px rgba(20, 20, 20, 0.06);
+  --shadow-hover: 0 20px 48px -8px rgba(197, 160, 89, 0.16);
+  --shadow-subtle: 0 4px 18px rgba(0, 0, 0, 0.03);
+  --shadow-image: 0 14px 32px rgba(20, 20, 20, 0.08);
+
+  /* Transitions */
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Global Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-ivory);
+  color: var(--text-primary);
+  font-family: var(--font-hebrew);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.65;
+}
+
+/* Atmospheric Editorial Grain & Ambient Glow */
+.editorial-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 12% 18%, rgba(216, 207, 242, 0.22), transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(232, 216, 176, 0.2), transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(253, 251, 247, 0.85), var(--bg-ivory));
+}
+
+/* --------------------------------------------------------------------------
+   3. Application Shell & Editorial Header
+   -------------------------------------------------------------------------- */
+.app-container {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+/* Header Masthead */
+.masthead {
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-fine);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(253, 251, 247, 0.9);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.masthead-branding {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-monogram {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-noir);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--accent-gold);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.brand-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-noir);
+  line-height: 1.1;
+}
+
+.brand-edition {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.masthead-indicators {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.badge-academic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background-color: var(--accent-lilac-light);
+  border: 1px solid var(--border-lilac);
+  color: var(--accent-lilac-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.slide-number-display {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  color: var(--text-noir);
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.slide-number-display .current {
+  font-weight: 600;
+  color: var(--accent-gold-dark);
+}
+
+.slide-number-display .separator {
+  color: var(--border-fine);
+  font-size: 1rem;
+}
+
+.slide-number-display .total {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   4. Slide Deck Presentation Stage
+   -------------------------------------------------------------------------- */
+.presentation-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 1360px;
+  height: 100%;
+  padding: 0.85rem 2.25rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.slide-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Inactive slides are display: none to guarantee zero bleeding */
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold-light) transparent;
+}
+
+.slide.active {
+  display: flex;
+  animation: slideFadeIn 0.32s ease forwards;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Editorial Slide Headers & Common Typographic Components
+   -------------------------------------------------------------------------- */
+.slide-header {
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid var(--border-fine);
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+
+.slide-tag {
+  display: inline-block;
+  font-family: var(--font-editorial);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--accent-gold-dark);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.slide-title-en {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-noir);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+  overflow-wrap: break-word;
+}
+
+.slide-subtitle-he {
+  font-size: clamp(0.98rem, 1.25vw, 1.18rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.editorial-lead {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--text-noir);
+  line-height: 1.65;
+  margin-bottom: 0.8rem;
+}
+
+.editorial-text {
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.editorial-text p {
+  margin-bottom: 0.8rem;
+}
+
+.editorial-quote {
+  position: relative;
+  border-inline-start: 3px solid var(--accent-gold);
+  padding-inline-start: 1.2rem;
+  margin: 1.15rem 0;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   6. Editorial Images & Fashion Frames
+   -------------------------------------------------------------------------- */
+.editorial-image-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  background: var(--bg-alabaster);
+  box-shadow: var(--shadow-image);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.editorial-image-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.editorial-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.editorial-image-frame:hover img {
+  transform: scale(1.025);
+}
+
+.image-overlay-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  background: rgba(20, 20, 20, 0.78);
+  backdrop-filter: blur(6px);
+  color: var(--bg-ivory);
+  font-family: var(--font-editorial);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 0.65rem 0.95rem;
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.88), transparent);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+
+/* --------------------------------------------------------------------------
+   7. SLIDE 5: Virtual Fitting Room HUD Overlay
+   -------------------------------------------------------------------------- */
+.vton-visual-frame {
+  height: 420px;
+  position: relative;
+}
+
+.vton-scan-laser {
+  position: absolute;
+  inset-inline: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), #FFF, var(--accent-gold), transparent);
+  box-shadow: 0 0 12px var(--accent-gold), 0 0 24px rgba(197, 160, 89, 0.4);
+  z-index: 2;
+  pointer-events: none;
+  animation: vtonLaserScan 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes vtonLaserScan {
+  0% { top: 6%; opacity: 0.35; }
+  50% { opacity: 0.95; }
+  100% { top: 92%; opacity: 0.35; }
+}
+
+.vton-landmark-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.landmark-node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  border: 1.5px solid #FFF;
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.8);
+  transform: translate(50%, -50%);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.landmark-node::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  background: rgba(20, 20, 20, 0.82);
+  color: var(--accent-gold-light);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+.vton-telemetry-badge {
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  background: rgba(20, 20, 20, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-gold);
+  border-radius: 3px;
+  padding: 0.35rem 0.75rem;
+  color: var(--accent-gold-light);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  z-index: 3;
+}
+
+.vton-telemetry-badge span {
+  color: var(--accent-lilac);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   8. SLIDE 6: Three.js 3D Garment Studio
+   -------------------------------------------------------------------------- */
+.layout-studio-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1040px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.studio-canvas-card {
+  width: 100%;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F9F6F0 60%, #F3EFE6 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: var(--shadow-editorial);
+}
+
+.studio-top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-fine);
+}
+
+.studio-title-badge {
+  font-family: var(--font-editorial);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-noir);
+}
+
+.studio-hint-badge {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+#studio-webgl-container {
+  width: 100%;
+  height: 380px;
+  position: relative;
+  cursor: grab;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#studio-webgl-container:active {
+  cursor: grabbing;
+}
+
+#studio-webgl-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.webgl-fallback-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-alabaster);
+  border: 1px dashed var(--border-gold);
+  border-radius: 6px;
+  padding: 2rem;
+  text-align: center;
+  gap: 0.85rem;
+}
+
+.fallback-icon {
+  font-size: 2.2rem;
+}
+
+.studio-dock {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  box-shadow: var(--shadow-subtle);
+  flex-wrap: wrap;
+}
+
+.dock-section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dock-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dock-pills {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dock-pill-btn {
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-fine);
+  background: var(--bg-card);
+  font-family: var(--font-hebrew);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dock-pill-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+.dock-pill-btn.active {
+  background: var(--accent-gold-light);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+  font-weight: 600;
+}
+
+.swatch-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.swatch-btn:hover {
+  transform: scale(1.15);
+}
+
+.swatch-btn.active {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--accent-gold);
+}
+
+.btn-reset-view {
+  background: none;
+  border: 1px solid var(--border-fine);
+  border-radius: 4px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-reset-view:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+/* --------------------------------------------------------------------------
+   9. SLIDE 7: Pyodide In-Browser Python Engine Styles
+   -------------------------------------------------------------------------- */
+.layout-python-engine {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+/* Preferences Console */
+.python-console-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 8px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  box-shadow: var(--shadow-editorial);
+}
+
+.console-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-fine);
+  padding-bottom: 0.75rem;
+}
+
+.pyodide-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.pyodide-status.ready {
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--accent-gold-dark);
+  border: 1px solid var(--accent-gold);
+}
+
+.pyodide-status.loading, .pyodide-status.computing {
+  background: var(--accent-lilac-light);
+  color: var(--accent-lilac-dark);
+  border: 1px solid var(--accent-lilac);
+  animation: pulseStatus 1.5s infinite;
+}
+
+.pyodide-status.error {
+  background: #FDF0ED;
+  color: #B43422;
+  border: 1px solid #E4796B;
+}
+
+@keyframes pulseStatus {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* 3D Bridge Bar (Imports selections from Slide 6) */
+.selection-bridge-bar {
+  background: var(--bg-alabaster);
+  border: 1px dashed var(--border-gold);
+  border-radius: 6px;
+  padding: 0.65rem 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.bridge-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bridge-tag {
+  background: var(--bg-card);
+  border: 1px solid var(--border-fine);
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-noir);
+  font-weight: 500;
+}
+
+.py-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.py-group-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+.py-pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.py-pill-btn {
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-fine);
+  background: var(--bg-card);
+  font-family: var(--font-hebrew);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.py-pill-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+.py-pill-btn.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Recommendation Result Display */
+.recommendation-result-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-editorial);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-lilac));
+}
+
+.rec-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rec-title-he {
+  font-family: var(--font-editorial);
+  font-size: 1.45rem;
+  color: var(--text-noir);
+  margin-top: 0.2rem;
+  line-height: 1.2;
+}
+
+.rec-title-en {
+  font-family: var(--font-editorial);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rec-score-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  background: var(--bg-alabaster);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.2);
+  flex-shrink: 0;
+}
+
+.score-number {
+  font-family: var(--font-editorial);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-gold-dark);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.rec-desc-he {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Transparent Breakdown Grid */
+.score-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.breakdown-pill {
+  background: var(--bg-alabaster);
+  border: 1px solid var(--border-fine);
+  border-radius: 5px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pill-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+.pill-head strong {
+  font-family: var(--font-mono);
+  color: var(--accent-gold-dark);
+}
+
+.pill-reason {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.rec-styling-tip {
+  background: rgba(216, 207, 242, 0.22);
+  border-inline-start: 3px solid var(--accent-lilac-dark);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Expandable Code Frame */
+.code-expand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.btn-toggle-code {
+  background: none;
+  border: 1px solid var(--border-fine);
+  border-radius: 4px;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-toggle-code:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+.code-viewer-frame {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  margin-top: 0.65rem;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.code-viewer-header {
+  padding: 0.5rem 0.85rem;
+  background: #1F1F1F;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #C5A059;
+}
+
+.code-viewer-body {
+  padding: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #E2E0DB;
+  line-height: 1.5;
+  max-height: 220px;
+  overflow-y: auto;
+  direction: ltr;
+  text-align: left;
+}
+
+/* Educational Callout */
+.educational-simulation-callout {
+  background: rgba(253, 251, 247, 0.95);
+  border: 1px solid var(--border-gold);
+  border-inline-start: 4px solid var(--accent-gold-dark);
+  border-radius: 4px;
+  padding: 0.85rem 1.1rem;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.educational-simulation-callout strong {
+  color: var(--accent-gold-dark);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Slide Layouts (1, 2, 3, 4, 8, 9, 10)
+   -------------------------------------------------------------------------- */
+/* --- SLIDE 1: Hero Cover --- */
+.layout-hero-cover {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-statement-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.hero-issue-stamp {
+  font-family: var(--font-editorial);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold-dark);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-issue-stamp::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-gold);
+}
+
+.hero-headline {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.85rem, 3.1vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-noir);
+  letter-spacing: 0.02em;
+}
+
+.hero-portrait-frame {
+  height: 440px;
+  position: relative;
+}
+
+/* --- SLIDE 2: Transformation --- */
+.layout-transformation {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.transform-stage-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+.transform-stage-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.stage-badge {
+  display: inline-block;
+  font-family: var(--font-editorial);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold-dark);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.stage-image-thumb {
+  height: 165px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.65rem 0;
+  border: 1px solid var(--border-fine);
+}
+
+.stage-image-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prompt-code-box {
+  background: var(--bg-alabaster);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0.65rem 0;
+  direction: ltr;
+  text-align: left;
+}
+
+.prompt-token {
+  color: var(--accent-gold-dark);
+  font-weight: 600;
+}
+
+/* --- SLIDE 3: Debate --- */
+.layout-debate {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.debate-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+  margin-top: 1rem;
+}
+
+.debate-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.debate-card.ai-side {
+  border-top: 3px solid var(--accent-gold);
+}
+
+.debate-card.human-side {
+  border-top: 3px solid var(--accent-lilac-dark);
+}
+
+.debate-tag {
+  font-family: var(--font-editorial);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.debate-card.ai-side .debate-tag { color: var(--accent-gold-dark); }
+.debate-card.human-side .debate-tag { color: var(--accent-lilac-dark); }
+
+.debate-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-noir);
+  margin-bottom: 0.45rem;
+}
+
+.debate-points {
+  list-style: none;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.debate-points li {
+  margin-bottom: 0.45rem;
+  position: relative;
+  padding-inline-start: 1rem;
+}
+
+.debate-points li::before {
+  content: '•';
+  position: absolute;
+  right: 0;
+  color: var(--accent-gold);
+}
+
+.debate-visual-frame {
+  height: 410px;
+}
+
+/* --- SLIDE 4: Lookbook --- */
+.layout-lookbook {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.lookbook-moodboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.moodboard-feature {
+  height: 320px;
+}
+
+.swatch-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-fine);
+  border-radius: 4px;
+}
+
+.swatch-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-inline-end: 0.4rem;
+}
+
+.swatch-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.stylist-breakdown-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  padding: 1.4rem;
+  box-shadow: var(--shadow-editorial);
+}
+
+/* --- SLIDE 8: Circular Sustainability --- */
+.layout-sustainability {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sustainability-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.sustainability-flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.flow-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.flow-icon {
+  font-size: 1.35rem;
+  color: var(--accent-gold-dark);
+}
+
+.flow-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+.flow-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* --- SLIDE 9: Human Behind Algorithm --- */
+.layout-human-atelier {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.atelier-photo-stack {
+  position: relative;
+  height: 400px;
+}
+
+.atelier-caption-box {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: var(--shadow-editorial);
+}
+
+/* --- SLIDE 10: Digital Passport --- */
+.layout-passport {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.passport-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-hover);
+  position: relative;
+  overflow: hidden;
+}
+
+.passport-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-lilac), var(--accent-gold));
+}
+
+.passport-seal {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-editorial);
+  font-size: 0.8rem;
+  color: var(--accent-gold-dark);
+  font-weight: 600;
+  transform: rotate(-12deg);
+}
+
+.passport-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 1.15rem 0;
+}
+
+.passport-meta-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-fine);
+  padding-bottom: 0.35rem;
+  font-size: 0.88rem;
+}
+
+.passport-meta-item span:first-child {
+  color: var(--text-muted);
+}
+
+.passport-meta-item span:last-child {
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+/* --------------------------------------------------------------------------
+   11. Global UI Pills, Badges & Interactive Tags
+   -------------------------------------------------------------------------- */
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.85rem 0;
+}
+
+.pill {
+  padding: 0.28rem 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-fine);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+}
+
+.pill.hashtag {
+  direction: ltr;
+}
+
+.pill.active, .pill:hover {
+  background: var(--accent-lilac-light);
+  border-color: var(--accent-lilac);
+  color: var(--accent-lilac-dark);
+}
+
+/* --------------------------------------------------------------------------
+   12. Bottom Navigation Bar & Slide Controls
+   -------------------------------------------------------------------------- */
+.editorial-footer {
+  padding: 0.85rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-fine);
+  background: rgba(253, 251, 247, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.nav-indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.dot-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.15);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+
+.dot-indicator:hover {
+  background: var(--accent-gold);
+  transform: scale(1.2);
+}
+
+.dot-indicator.active {
+  background: var(--accent-gold);
+  width: 24px;
+  border-radius: 10px;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: 2px;
+  font-family: var(--font-hebrew);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-fine);
+  background: var(--bg-card);
+  color: var(--text-noir);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-nav:hover:not(:disabled) {
+  border-color: var(--accent-gold);
+  background: var(--bg-alabaster);
+  box-shadow: var(--shadow-hover);
+  color: var(--accent-gold-dark);
+}
+
+.btn-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-nav.primary {
+  background: var(--text-noir);
+  color: var(--bg-ivory);
+  border-color: var(--text-noir);
+}
+
+.btn-nav.primary:hover:not(:disabled) {
+  background: var(--accent-gold-dark);
+  border-color: var(--accent-gold-dark);
+  color: #FFFFFF;
+}
+
+.keyboard-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.kbd-badge {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--border-fine);
+  border-radius: 3px;
+  background: var(--bg-card);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   13. Responsive Editorial Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .masthead, .editorial-footer {
+    padding: 0.85rem 1.5rem;
+  }
+  
+  .slide-viewport {
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .layout-hero-cover,
+  .layout-transformation,
+  .layout-debate,
+  .layout-lookbook,
+  .layout-vton,
+  .layout-python-engine,
+  .sustainability-split,
+  .layout-human-atelier,
+  .layout-passport {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+  
+  .sustainability-flow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero-portrait-frame,
+  .debate-visual-frame,
+  .vton-visual-frame,
+  .atelier-photo-stack {
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100%;
+  }
+
+  .app-container {
+    height: 100vh;
+    height: 100dvh;
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  .presentation-stage {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  .slide-viewport {
+    padding: 0.5rem 0.85rem !important;
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  .slide {
+    justify-content: flex-start !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 3rem !important;
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  .slide-header {
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .slide-title-en {
+    font-size: 1.25rem !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+  
+  .slide-subtitle-he {
+    font-size: 0.88rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .hero-issue-stamp {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em !important;
+    flex-wrap: wrap !important;
+  }
+
+  .hero-issue-stamp::after {
+    display: none !important;
+  }
+  
+  .hero-headline {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .editorial-lead {
+    font-size: 0.94rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .editorial-text {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .hero-portrait-frame {
+    height: 200px !important;
+  }
+
+  .masthead {
+    padding: 0.55rem 0.85rem !important;
+  }
+
+  .masthead-branding {
+    gap: 0.5rem !important;
+  }
+  
+  .brand-monogram {
+    font-size: 1rem !important;
+    padding: 0.1rem 0.35rem !important;
+  }
+
+  .brand-title {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.12em !important;
+  }
+  
+  .brand-edition {
+    display: none !important;
+  }
+
+  .badge-academic {
+    display: none !important;
+  }
+
+  .slide-number-display {
+    font-size: 0.95rem !important;
+  }
+
+  #studio-webgl-container {
+    height: 280px !important;
+  }
+
+  .studio-dock {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .dock-section {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+  }
+
+  .score-breakdown-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .editorial-footer {
+    padding: 0.55rem 0.85rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+  }
+  
+  .keyboard-hint {
+    display: none !important;
+  }
+  
+  .nav-indicators {
+    order: 2 !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  .nav-controls {
+    order: 1 !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  
+  .btn-nav {
+    flex: 1 !important;
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .debate-panels {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sustainability-split {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Milestone 4 — personalized look passport */
+.passport-preview { margin-top: 1rem; }
+.passport-empty { padding: 0.85rem 0; color: var(--text-secondary); line-height: 1.65; }
+.passport-controls { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1rem; }
+.passport-action { margin-top: .55rem; }
+.passport-disclaimer { font-size: .78rem; color: var(--text-secondary); line-height: 1.5; margin-top: 1rem; }
+.passport-result-head { display:flex; align-items:center; justify-content:space-between; gap:.8rem; }
+.passport-look-badge { font-family: var(--font-editorial); letter-spacing:.08em; color:var(--accent-gold-dark); font-size:.92rem; }
+.passport-result-score { font-size:1.8rem; font-family:var(--font-editorial); color:var(--accent-gold-dark); }
+.passport-result-score small { font-size:.9rem; color:var(--text-secondary); }
+.passport-look-title { font-size:1.2rem; margin-top:.3rem; line-height:1.4; }
+.passport-look-english { color:var(--text-secondary); font-family:var(--font-editorial); margin-bottom:.5rem; }
+.passport-color-field { display:inline-flex; align-items:center; gap:.45rem; }
+.passport-color-swatch { display:inline-block; width:1.1rem; height:1.1rem; border:1px solid #999; border-radius:50%; }
+.passport-reason { font-size:.89rem; margin-top:.6rem; line-height:1.5; }
+.passport-engine-label { font-size:.72rem; margin-top:.4rem; color:var(--text-muted); }
+@media print {
+  body { overflow:visible !important; }
+  .masthead, .editorial-footer, .passport-controls { display:none !important; }
+  .app-container, .presentation-stage, .slide-viewport, .slide-deck { height:auto !important; min-height:0 !important; overflow:visible !important; }
+  .slide { display:none !important; }
+  #slide-10 { display:flex !important; position:static !important; opacity:1 !important; visibility:visible !important; transform:none !important; overflow:visible !important; }
+  .passport-card { break-inside:avoid; }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <script src='https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js'></script>
+</head>
+<body>
+  <script>
+    async function main() {
+      console.log('[v0.24.1] Loading...');
+      const pyodide = await loadPyodide();
+      console.log('[v0.24.1] SUCCESS! Python version:', pyodide.runPython('import sys; sys.version'));
+    }
+    main().catch(e => console.error('[v0.24.1 ERROR]', e.message || e));
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+[31862:2589470:1103/141803.050455:INFO:components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc:241] No machine level policy manager exists.
+Trying to load the allocator multiple times. This is *not* supported.
+[31870:2589555:1103/141803.557786:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.559780:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141803.583875:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.583980:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141803.585317:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.585414:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141803.586065:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.586173:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141803.587808:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.587903:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141803.619949:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.620047:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141803.698312:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141803.698418:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31862:2589470:1103/141804.385886:INFO:CONSOLE:63] "[GarmentStudio3D] Interactive 3D Studio initialized successfully.", source: http://localhost:8101/js/three-studio.js (63)
+[31862:2589470:1103/141804.386372:INFO:CONSOLE:52] "AI Fashion Lab ready. 3D Studio & Python Engine online.", source: http://localhost:8101/js/app.js (52)
+[31862:2589470:1103/141804.393660:INFO:CONSOLE:218] "[PythonEngine] Loaded python/recommender.py from disk.", source: http://localhost:8101/js/python-engine.js (218)
+[31862:2589470:1103/141804.641573:INFO:CONSOLE:737] "[TEST] Page loaded. Checking Pyodide engine...", source: http://localhost:8101/test_pyodide.html (737)
+[31870:2589555:1103/141806.748997:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141806.749082:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31862:2589470:1103/141806.806798:INFO:CONSOLE:10] "Python path configuration:", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806863:INFO:CONSOLE:10] "  PYTHONHOME = '/'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806881:INFO:CONSOLE:10] "  PYTHONPATH = (not set)", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806893:INFO:CONSOLE:10] "  program name = './this.program'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806905:INFO:CONSOLE:10] "  isolated = 0", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806919:INFO:CONSOLE:10] "  environment = 1", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806931:INFO:CONSOLE:10] "  user site = 1", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806942:INFO:CONSOLE:10] "  safe_path = 0", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806954:INFO:CONSOLE:10] "  import site = 1", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806965:INFO:CONSOLE:10] "  is in build tree = 0", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806977:INFO:CONSOLE:10] "  stdlib dir = '/lib/python3.12'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.806989:INFO:CONSOLE:10] "  sys._base_executable = '/home/pyodide/this.program'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807003:INFO:CONSOLE:10] "  sys.base_prefix = '/'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807015:INFO:CONSOLE:10] "  sys.base_exec_prefix = '/'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807028:INFO:CONSOLE:10] "  sys.platlibdir = 'lib'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807063:INFO:CONSOLE:10] "  sys.executable = '/home/pyodide/this.program'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807076:INFO:CONSOLE:10] "  sys.prefix = '/'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807089:INFO:CONSOLE:10] "  sys.exec_prefix = '/'", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807125:INFO:CONSOLE:10] "  sys.path = [", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807144:INFO:CONSOLE:10] "    '/lib/python312.zip',", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807165:INFO:CONSOLE:10] "    '/lib/python3.12',", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807176:INFO:CONSOLE:10] "    '/lib/python3.12/lib-dynload',", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807201:INFO:CONSOLE:10] "  ]", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807219:INFO:CONSOLE:10] "Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807241:INFO:CONSOLE:10] "Python runtime state: core initialized", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807263:INFO:CONSOLE:10] "LookupError: no codec search functions registered: can't find encoding", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807281:INFO:CONSOLE:10] "Current thread 0x00461e30 (most recent call first):", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807298:INFO:CONSOLE:10] "  <no Python frame>", source: https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.asm.js (10)
+[31862:2589470:1103/141806.807349:INFO:CONSOLE:271] "[PythonEngine] Failed to initialize Pyodide: [object Object]", source: http://localhost:8101/js/python-engine.js (271)
+[31870:2589555:1103/141806.809102:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141806.809181:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141806.911150:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141806.911228:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141806.974676:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141806.974748:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141807.034106:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141807.034180:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141807.093848:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141807.093961:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141807.123207:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141807.123270:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589555:1103/141807.208223:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+[31870:2589681:1103/141807.208312:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
