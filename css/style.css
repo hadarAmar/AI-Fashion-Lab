@@ -1,0 +1,702 @@
+/* ==========================================================================
+   AI FASHION LAB - Luxury Fashion Editorial Stylesheet
+   Milestone 1: Presentation Architecture & Aesthetic Foundation
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Editorial Color Palette */
+  --bg-ivory: #FDFBF7;
+  --bg-alabaster: #F7F4ED;
+  --bg-card: #FFFFFF;
+  --bg-card-glass: rgba(255, 255, 255, 0.78);
+  
+  --accent-gold: #C5A059;
+  --accent-gold-light: #E8D8B0;
+  --accent-gold-dark: #8F6F30;
+  --accent-lilac: #D8CFF2;
+  --accent-lilac-light: #F4F1FA;
+  --accent-lilac-dark: #6C59A4;
+  
+  --text-noir: #141414;
+  --text-primary: #21201D;
+  --text-secondary: #63625E;
+  --text-muted: #8E8D88;
+  
+  --border-fine: rgba(20, 20, 20, 0.08);
+  --border-gold: rgba(197, 160, 89, 0.35);
+  --border-lilac: rgba(216, 207, 242, 0.5);
+  
+  /* Typography */
+  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-hebrew: 'Assistant', 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+  
+  /* Shadows & Depth */
+  --shadow-editorial: 0 12px 36px -8px rgba(20, 20, 20, 0.05);
+  --shadow-hover: 0 16px 44px -6px rgba(197, 160, 89, 0.12);
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.02);
+
+  /* Transitions */
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Global Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-ivory);
+  color: var(--text-primary);
+  font-family: var(--font-hebrew);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+}
+
+/* Background Texture / Grain / Atmospheric Glow */
+.editorial-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(216, 207, 242, 0.25), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(232, 216, 176, 0.2), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(253, 251, 247, 0.8), var(--bg-ivory));
+}
+
+/* --------------------------------------------------------------------------
+   3. Application Shell & Editorial Header
+   -------------------------------------------------------------------------- */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+/* Header Masthead */
+.masthead {
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-fine);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(253, 251, 247, 0.7);
+  z-index: 10;
+}
+
+.masthead-branding {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.brand-monogram {
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-noir);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--accent-gold);
+  border-radius: 2px;
+}
+
+.brand-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-noir);
+}
+
+.brand-edition {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.masthead-indicators {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.badge-academic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--accent-lilac-light);
+  border: 1px solid var(--border-lilac);
+  color: var(--accent-lilac-dark);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.slide-number-display {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  color: var(--text-noir);
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.slide-number-display .current {
+  font-weight: 600;
+  color: var(--accent-gold-dark);
+}
+
+.slide-number-display .separator {
+  color: var(--border-fine);
+  font-size: 1rem;
+}
+
+.slide-number-display .total {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   4. Slide Deck Presentation Stage
+   -------------------------------------------------------------------------- */
+.presentation-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1360px;
+  padding: 1.5rem 3rem;
+  margin: 0 auto;
+}
+
+.slide-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(30px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold-light) transparent;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.slide.previous {
+  transform: translateX(-30px);
+}
+
+/* --------------------------------------------------------------------------
+   5. Editorial Slide Typography & Layouts
+   -------------------------------------------------------------------------- */
+.slide-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-fine);
+  padding-bottom: 1.25rem;
+  position: relative;
+}
+
+.slide-tag {
+  display: inline-block;
+  font-family: var(--font-editorial);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.slide-title-en {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-noir);
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+.slide-subtitle-he {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Two-Column Editorial Layout */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.editorial-grid.wide-start {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.editorial-grid.wide-end {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.editorial-text {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.editorial-text p {
+  margin-bottom: 1.2rem;
+}
+
+.editorial-lead {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-noir);
+  line-height: 1.7;
+}
+
+/* Highlight Quote & Vignettes */
+.editorial-quote {
+  border-inline-start: 3px solid var(--accent-gold);
+  padding-inline-start: 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+/* Feature Cards & Glass Panes */
+.card-deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.editorial-card {
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.editorial-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-num {
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-noir);
+  margin-bottom: 0.6rem;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   6. Editorial Elements & Visual Spotlights
+   -------------------------------------------------------------------------- */
+.visual-frame {
+  position: relative;
+  background: var(--bg-alabaster);
+  border: 1px solid var(--border-fine);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 280px;
+  box-shadow: var(--shadow-editorial);
+}
+
+.visual-silhouette {
+  width: 140px;
+  height: 200px;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+  filter: drop-shadow(0 8px 16px rgba(197, 160, 89, 0.2));
+  transition: transform 0.6s ease;
+}
+
+.visual-frame:hover .visual-silhouette {
+  transform: scale(1.03);
+}
+
+.visual-caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 0.75rem;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0;
+}
+
+.pill {
+  padding: 0.3rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-fine);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.pill.active, .pill:hover {
+  background: var(--accent-lilac-light);
+  border-color: var(--accent-lilac);
+  color: var(--accent-lilac-dark);
+}
+
+/* --------------------------------------------------------------------------
+   7. Placeholders for Advanced Milestones (Slides 6 & 7)
+   -------------------------------------------------------------------------- */
+.placeholder-studio {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(246, 243, 236, 0.7));
+  border: 1.5px dashed var(--accent-gold);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  box-shadow: var(--shadow-editorial);
+}
+
+.placeholder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background-color: var(--accent-gold-light);
+  color: var(--accent-gold-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.placeholder-icon {
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+}
+
+.placeholder-title {
+  font-family: var(--font-editorial);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-noir);
+}
+
+.placeholder-desc {
+  max-width: 580px;
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.placeholder-controls-mock {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mock-btn {
+  padding: 0.5rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-fine);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Educational Boundary Banner */
+.simulation-boundary-banner {
+  background: rgba(216, 207, 242, 0.25);
+  border-inline-start: 4px solid var(--accent-lilac-dark);
+  padding: 1rem 1.25rem;
+  border-radius: 0 4px 4px 0;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--accent-lilac-dark);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   8. Bottom Navigation Bar & Slide Controls
+   -------------------------------------------------------------------------- */
+.editorial-footer {
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-fine);
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.nav-indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dot-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.15);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+
+.dot-indicator:hover {
+  background: var(--accent-gold);
+  transform: scale(1.2);
+}
+
+.dot-indicator.active {
+  background: var(--accent-gold);
+  width: 24px;
+  border-radius: 10px;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 2px;
+  font-family: var(--font-hebrew);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-fine);
+  background: var(--bg-card);
+  color: var(--text-noir);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-nav:hover:not(:disabled) {
+  border-color: var(--accent-gold);
+  background: var(--bg-alabaster);
+  box-shadow: var(--shadow-hover);
+  color: var(--accent-gold-dark);
+}
+
+.btn-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-nav.primary {
+  background: var(--text-noir);
+  color: var(--bg-ivory);
+  border-color: var(--text-noir);
+}
+
+.btn-nav.primary:hover:not(:disabled) {
+  background: var(--accent-gold-dark);
+  border-color: var(--accent-gold-dark);
+  color: #FFFFFF;
+}
+
+.keyboard-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.kbd-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border-fine);
+  border-radius: 3px;
+  background: var(--bg-card);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   9. Responsive Editorial Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .masthead, .editorial-footer {
+    padding: 1.2rem 1.8rem;
+  }
+  
+  .slide-viewport {
+    padding: 1rem 1.8rem;
+  }
+  
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  
+  .editorial-grid.wide-start, .editorial-grid.wide-end {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .masthead {
+    padding: 1rem 1.25rem;
+  }
+  
+  .masthead-branding {
+    gap: 0.75rem;
+  }
+  
+  .brand-title {
+    font-size: 0.95rem;
+  }
+  
+  .badge-academic {
+    display: none;
+  }
+  
+  .slide-viewport {
+    padding: 0.8rem 1.25rem;
+  }
+  
+  .slide {
+    justify-content: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  .slide-title-en {
+    font-size: 1.6rem;
+  }
+  
+  .editorial-footer {
+    padding: 0.9rem 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  
+  .keyboard-hint {
+    display: none;
+  }
+  
+  .nav-indicators {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-controls {
+    order: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .btn-nav {
+    flex: 1;
+  }
+}
