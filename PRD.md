@@ -375,10 +375,10 @@ A visible indicator badge (`[מערכת סימולציה לימודית]` / `[Ed
 ## 10. Success Metrics & Verification Checklist
 
 - [x] **PRD Approved:** Complete coverage of goals, audience, visual direction, slides, and tech stack.
-- [ ] **Aesthetic Integrity:** High-fashion luxury editorial feel with ivory, cream, champagne, and lilac accents.
-- [ ] **RTL / BiDi Robustness:** Flawless Hebrew rendering with properly aligned English titles and zero punctuation glitches.
-- [ ] **Three.js Customizer:** Smooth 60fps 3D garment rendering with responsive interaction on modern viewports.
-- [ ] **Pyodide Execution:** Real Python code running synchronously or asynchronously in-browser, generating visible score breakdowns.
-- [ ] **Clarity of AI vs. Simulation:** Visible educational badge distinguishing real GenAI models from the rule-based simulation.
-- [ ] **Responsive Design:** Seamless experience across desktop (primary) and mobile/tablet devices.
+- [x] **Aesthetic Integrity:** High-fashion luxury editorial feel with ivory, cream, champagne, and lilac accents.
+- [x] **RTL / BiDi Robustness:** Flawless Hebrew rendering with properly aligned English titles and zero punctuation glitches.
+- [x] **Three.js Customizer:** Smooth 60fps 3D garment rendering with responsive interaction on modern viewports (Milestone 2 completed).
+- [ ] **Pyodide Execution:** Real Python code running synchronously or asynchronously in-browser, generating visible score breakdowns (Milestone 3).
+- [x] **Clarity of AI vs. Simulation:** Visible educational badge distinguishing real GenAI models from the rule-based simulation.
+- [x] **Responsive Design:** Seamless experience across desktop (primary) and mobile/tablet devices.
 - [ ] **Documentation:** Thorough `README.md` containing prompt history, screenshots, and setup instructions.

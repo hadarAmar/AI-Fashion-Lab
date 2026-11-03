@@ -1,6 +1,6 @@
 /* ==========================================================================
    AI FASHION LAB - Luxury Fashion Editorial Stylesheet
-   Milestone 1.5: Visual Storytelling, Editorial Polish & Responsive Hardening
+   Milestone 2: Three.js 3D Garment Studio & High-Tech Virtual Fitting HUD
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -266,7 +266,7 @@ html, body {
    5. Editorial Slide Headers & Common Typographic Components
    -------------------------------------------------------------------------- */
 .slide-header {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.15rem;
   border-bottom: 1px solid var(--border-fine);
   padding-bottom: 0.75rem;
   position: relative;
@@ -375,6 +375,7 @@ html, body {
   padding: 0.22rem 0.6rem;
   border-radius: 2px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 3;
 }
 
 .image-caption {
@@ -382,20 +383,298 @@ html, body {
   bottom: 0;
   inset-inline: 0;
   padding: 0.65rem 0.95rem;
-  background: linear-gradient(to top, rgba(20, 20, 20, 0.85), transparent);
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.88), transparent);
   color: #FFFFFF;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 3;
 }
 
 /* --------------------------------------------------------------------------
-   7. Diverse Magazine Layout Architectures (Per Slide)
+   7. SLIDE 5: Virtual Fitting Room HUD Overlay
    -------------------------------------------------------------------------- */
+.vton-visual-frame {
+  height: 420px;
+  position: relative;
+}
 
-/* --- SLIDE 1: Asymmetric Hero Magazine Cover --- */
+/* Scanning Laser Animation */
+.vton-scan-laser {
+  position: absolute;
+  inset-inline: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), #FFF, var(--accent-gold), transparent);
+  box-shadow: 0 0 12px var(--accent-gold), 0 0 24px rgba(197, 160, 89, 0.4);
+  z-index: 2;
+  pointer-events: none;
+  animation: vtonLaserScan 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes vtonLaserScan {
+  0% { top: 6%; opacity: 0.35; }
+  50% { opacity: 0.95; }
+  100% { top: 92%; opacity: 0.35; }
+}
+
+/* Digital Landmark Pins */
+.vton-landmark-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.landmark-node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  border: 1.5px solid #FFF;
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.8);
+  transform: translate(50%, -50%);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.landmark-node::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  background: rgba(20, 20, 20, 0.82);
+  color: var(--accent-gold-light);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+.vton-telemetry-badge {
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  background: rgba(20, 20, 20, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-gold);
+  border-radius: 3px;
+  padding: 0.35rem 0.75rem;
+  color: var(--accent-gold-light);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  z-index: 3;
+}
+
+.vton-telemetry-badge span {
+  color: var(--accent-lilac);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   8. SLIDE 6: Three.js 3D Garment Studio
+   -------------------------------------------------------------------------- */
+.layout-studio-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1040px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.studio-canvas-card {
+  width: 100%;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F9F6F0 60%, #F3EFE6 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: var(--shadow-editorial);
+}
+
+.studio-top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-fine);
+}
+
+.studio-title-badge {
+  font-family: var(--font-editorial);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-noir);
+}
+
+.studio-hint-badge {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+#studio-webgl-container {
+  width: 100%;
+  height: 380px;
+  position: relative;
+  cursor: grab;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#studio-webgl-container:active {
+  cursor: grabbing;
+}
+
+#studio-webgl-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* WebGL Fallback Card */
+.webgl-fallback-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-alabaster);
+  border: 1px dashed var(--border-gold);
+  border-radius: 6px;
+  padding: 2rem;
+  text-align: center;
+  gap: 0.85rem;
+}
+
+.fallback-icon {
+  font-size: 2.2rem;
+}
+
+/* 3D Studio Floating Control Dock */
+.studio-dock {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-fine);
+  border-radius: 6px;
+  box-shadow: var(--shadow-subtle);
+  flex-wrap: wrap;
+}
+
+.dock-section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dock-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dock-pills {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dock-pill-btn {
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-fine);
+  background: var(--bg-card);
+  font-family: var(--font-hebrew);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dock-pill-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+.dock-pill-btn.active {
+  background: var(--accent-gold-light);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+  font-weight: 600;
+}
+
+/* Swatches */
+.swatch-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.swatch-btn:hover {
+  transform: scale(1.15);
+}
+
+.swatch-btn.active {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--accent-gold);
+}
+
+.btn-reset-view {
+  background: none;
+  border: 1px solid var(--border-fine);
+  border-radius: 4px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-reset-view:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-dark);
+}
+
+/* --------------------------------------------------------------------------
+   9. Slide Layouts (1, 2, 3, 4, 7, 8, 9, 10)
+   -------------------------------------------------------------------------- */
+/* --- SLIDE 1: Hero Cover --- */
 .layout-hero-cover {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -441,7 +720,7 @@ html, body {
   position: relative;
 }
 
-/* --- SLIDE 2: Side-by-Side Visual Transformation Pipeline --- */
+/* --- SLIDE 2: Transformation --- */
 .layout-transformation {
   display: grid;
   grid-template-columns: 1fr 1.1fr 1fr;
@@ -511,7 +790,7 @@ html, body {
   font-weight: 600;
 }
 
-/* --- SLIDE 3: Editorial Debate Journal Spread --- */
+/* --- SLIDE 3: Debate --- */
 .layout-debate {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -584,7 +863,7 @@ html, body {
   height: 410px;
 }
 
-/* --- SLIDE 4: Lookbook & Stylist Atelier Grid --- */
+/* --- SLIDE 4: Lookbook --- */
 .layout-lookbook {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -635,7 +914,7 @@ html, body {
   box-shadow: var(--shadow-editorial);
 }
 
-/* --- SLIDE 5: VTON 3-Stage Pipeline with Reality Check --- */
+/* --- SLIDE 5: VTON 3-Stage Pipeline --- */
 .layout-vton {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -692,7 +971,6 @@ html, body {
   color: var(--text-secondary);
 }
 
-/* Reality Check Banner */
 .reality-check-banner {
   background: rgba(253, 251, 247, 0.95);
   border: 1px solid var(--border-gold);
@@ -711,91 +989,7 @@ html, body {
   margin-bottom: 0.2rem;
 }
 
-.vton-visual-frame {
-  height: 410px;
-}
-
-/* --- SLIDE 6: 3D Garment Studio Preview --- */
-.layout-studio-stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 940px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.studio-canvas-mockup {
-  width: 100%;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5F1E8 100%);
-  border: 1px solid var(--border-gold);
-  border-radius: 8px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  box-shadow: var(--shadow-editorial);
-}
-
-.studio-canvas-graphic {
-  width: 150px;
-  height: 175px;
-  margin: 0.85rem 0;
-  filter: drop-shadow(0 10px 20px rgba(197, 160, 89, 0.22));
-  animation: floatSubtle 4s ease-in-out infinite;
-}
-
-@keyframes floatSubtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.studio-toolbar {
-  display: flex;
-  gap: 1.1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 1.15rem;
-  padding: 0.75rem 1.4rem;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--border-fine);
-  border-radius: 999px;
-  box-shadow: var(--shadow-subtle);
-}
-
-.tool-group {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.tool-label {
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.tool-pill {
-  padding: 0.22rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-fine);
-  background: var(--bg-card);
-  font-size: 0.76rem;
-  color: var(--text-secondary);
-}
-
-.tool-pill.active {
-  border-color: var(--accent-gold);
-  background: var(--accent-gold-light);
-  color: var(--accent-gold-dark);
-  font-weight: 600;
-}
-
-/* --- SLIDE 7: Bilingual Code Notebook Atelier Spread --- */
+/* --- SLIDE 7: Python Code Atelier --- */
 .layout-code-atelier {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
@@ -881,7 +1075,7 @@ html, body {
   color: var(--accent-gold-dark);
 }
 
-/* --- SLIDE 8: Circular Eco-Fashion Horizontal Flow --- */
+/* --- SLIDE 8: Circular Sustainability --- */
 .layout-sustainability {
   display: flex;
   flex-direction: column;
@@ -930,7 +1124,7 @@ html, body {
   line-height: 1.5;
 }
 
-/* --- SLIDE 9: Haute Couture Atelier & Craftsmanship --- */
+/* --- SLIDE 9: Human Behind Algorithm --- */
 .layout-human-atelier {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -954,7 +1148,7 @@ html, body {
   box-shadow: var(--shadow-editorial);
 }
 
-/* --- SLIDE 10: Digital Fashion Passport Spread --- */
+/* --- SLIDE 10: Digital Passport --- */
 .layout-passport {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1024,7 +1218,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   8. Global UI Pills, Badges & Interactive Tags
+   10. Global UI Pills, Badges & Interactive Tags
    -------------------------------------------------------------------------- */
 .pill-list {
   display: flex;
@@ -1056,7 +1250,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   9. Bottom Navigation Bar & Slide Controls
+   11. Bottom Navigation Bar & Slide Controls
    -------------------------------------------------------------------------- */
 .editorial-footer {
   padding: 0.85rem 2.5rem;
@@ -1168,7 +1362,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   10. Responsive Editorial Adjustments
+   12. Responsive Editorial Adjustments
    -------------------------------------------------------------------------- */
 @media (max-width: 1100px) {
   .masthead, .editorial-footer {
@@ -1201,7 +1395,7 @@ html, body {
   .debate-visual-frame,
   .vton-visual-frame,
   .atelier-photo-stack {
-    height: 300px;
+    height: 320px;
   }
 }
 
@@ -1314,6 +1508,23 @@ html, body {
     font-size: 0.95rem !important;
   }
 
+  #studio-webgl-container {
+    height: 280px !important;
+  }
+
+  .studio-dock {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .dock-section {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+  }
+
   .editorial-footer {
     padding: 0.55rem 0.85rem !important;
     flex-wrap: wrap !important;
@@ -1353,19 +1564,5 @@ html, body {
 
   .scoring-metrics-mock {
     grid-template-columns: 1fr !important;
-  }
-
-  .studio-toolbar {
-    gap: 0.45rem !important;
-    padding: 0.5rem 0.85rem !important;
-    border-radius: 12px !important;
-  }
-
-  .tool-group {
-    flex-wrap: wrap !important;
-  }
-
-  .swatch-strip {
-    flex-wrap: wrap !important;
   }
 }
