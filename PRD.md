@@ -1,395 +1,875 @@
 # Product Requirements Document (PRD)
+## AI Fashion Lab — The Future of Fashion & Artificial Intelligence
 
-**Project Name:** AI Fashion Lab – The Future of Fashion and Artificial Intelligence  
-**Project Type:** Interactive Educational Web Presentation & Simulation  
-**Course:** Generative Artificial Intelligence (Academic Project)  
-**Document Version:** 1.0.0  
-**Status:** Approved for Implementation  
-**Target Environment:** Modern Web Browsers (Chrome, Safari, Firefox, Edge)  
+**Project Type:** Interactive Educational HTML Presentation  
+**Course:** Generative Artificial Intelligence  
+**Lecturer:** Dr. Yoram Segal  
+**Student:** Hadar Amar  
+**Institution:** Bar-Ilan University  
+**Document Version:** 2.0 — Final Project Documentation  
+**Original Planning Date:** November 3, 2026  
+**Documentation Update:** November 8, 2026  
+**Project Status:** Implemented and Published
 
----
-
-## 1. Executive Summary & Concept
-
-### 1.1 Overview
-**AI Fashion Lab** is an interactive, browser-based educational editorial presentation designed to showcase how Artificial Intelligence (AI) and Generative AI are revolutionizing the global fashion industry across design, styling, virtual fitting, supply chain sustainability, and ethical craftsmanship.
-
-Bridging theoretical academic concepts with tactile interaction, the project combines an editorial luxury magazine aesthetic with an interactive **Three.js 3D digital garment viewer** and an in-browser **Python (Pyodide) transparent recommendation engine**.
-
-### 1.2 The Core Premise
-The project contrasts:
-1. **Real-world cutting-edge AI technologies** (Diffusion models, Multimodal LLMs, Neural Radiance Fields / 3D Gaussian Splatting, Virtual Try-On networks like VTON).
-2. **A transparent, student-built rule-based recommendation simulation engine** written in pure Python and executed directly in the browser via Pyodide, demonstrating algorithm transparency, scoring mechanisms, and user profile matching.
+**Live Presentation:** https://hadarAmar.github.io/AI-Fashion-Lab/  
+**GitHub Repository:** https://github.com/hadarAmar/AI-Fashion-Lab
 
 ---
 
-## 2. Project Goals & Target Audience
+# 1. Executive Summary
 
-### 2.1 Project Objectives
-- **Academic Rigor:** Clearly articulate how generative models (GANs, Diffusion, Transformers) apply to real-world fashion pipelines while critically analyzing sustainability, copyright, and ethical implications.
-- **Visual Distinction:** Deliver a high-end luxury editorial experience reminiscent of *Vogue*, *Harper's Bazaar*, or high-fashion lookbooks.
-- **Dual-Engine Interactivity:**
-  - An interactive **3D garment customizer** using Three.js (color, silhouette, rotation, lighting).
-  - An interactive **Python fashion recommendation engine** powered by Pyodide that runs transparent scoring algorithms on client-chosen parameters.
-- **RTL & BiDi Excellence:** Seamlessly integrate English slide titles and technical terms with rich, natural Hebrew educational text with zero layout disruption.
-- **Transparent Simulation:** Explicitly separate industry AI capabilities from the project's educational simulation engine.
+## 1.1 Project Overview
 
-### 2.2 Target Audience
-- **Course Evaluators & Professors:** Assessing technical execution, architectural clarity, academic depth, and code quality.
-- **Students & Peers:** Looking for an engaging, intuitive, and interactive demonstration of AI concepts.
-- **Fashion & Tech Enthusiasts:** Interested in the intersection of generative algorithms and creative industries.
+**AI Fashion Lab** is an interactive educational website exploring how artificial intelligence and generative technologies are influencing the fashion industry.
 
----
+The presentation examines the relationship between technology and fashion design, including creative processes, personalization, virtual fitting, sustainability, and the role of human creativity.
 
-## 3. Visual Direction & Aesthetic Guidelines
+Rather than developing a conventional slide presentation, the project combines educational content with interactive demonstrations.
 
-### 3.1 Design Philosophy: Luxury Fashion Editorial
-The user experience is designed as an interactive, high-fashion digital editorial publication (comparable to *Vogue International*, *Harper's Bazaar*, and curated Paris/Milan fashion lookbooks). 
+It includes:
 
-Key Visual Pillars:
-1. **Diverse Editorial Layouts:** Rather than a repetitive two-column structure, every slide features a distinct magazine composition (e.g., Asymmetric Cover Spread, Side-by-Side Visual Transformation, Atelier Moodboard Grid, Circular Lifecycle Diagram, Split Console View).
-2. **High-Fashion Imagery & Original Sketches:** Editorial photography, authentic atelier craft imagery, and curated fashion silhouettes combined with subtle champagne gold framing.
-3. **Typography & Breathing Room:** High-contrast display serif typography paired with generous negative whitespace and micro-detailed metadata badges.
-4. **Digestible Storytelling:** Condensing heavy academic text into punchy editorial insights, structured visual callouts, and clear analytical tags.
+- Ten educational HTML slides.
+- Interactive navigation using JavaScript.
+- A customizable three-dimensional fashion garment using Three.js.
+- A Python-based fashion recommendation algorithm.
+- A personalized digital fashion passport.
+- A consistent visual language inspired by luxury fashion publications.
 
-### 3.2 Color Palette
-| Token | Name | Hex Code | Usage |
-| :--- | :--- | :--- | :--- |
-| `--bg-ivory` | Cream / Ivory Base | `#FDFBF7` | Primary background across all slides |
-| `--bg-secondary` | Warm Silk Alabaster | `#F7F4ED` | Card backgrounds, elevated surfaces, visual frames |
-| `--accent-gold` | Champagne Gold | `#C5A059` | Primary accent, borders, highlights, brand monogram |
-| `--accent-gold-light` | Pale Champagne Glow | `#E8D8B0` | Hover outlines, active pill backgrounds, luminous accents |
-| `--accent-lilac` | Soft Lilac | `#D8CFF2` | Secondary accent, category tags, interactive borders |
-| `--accent-lilac-subtle`| Whispering Lavender | `#F4F1FA` | Interactive badges, code accents |
-| `--text-noir` | Obsidian Black | `#141414` | Primary titles, bold leads, high-contrast editorial text |
-| `--text-secondary` | Muted Charcoal | `#63625E` | Explanatory copy, captions, footnotes |
-| `--border-subtle` | Fine Editorial Border | `rgba(20, 20, 20, 0.08)` | Dividers, card frames, image containers |
+The project is designed to make technological concepts easier to understand through interaction and visual storytelling.
+
+## 1.2 Central Project Question
+
+**How can artificial intelligence support creative processes in fashion while preserving human creativity and decision-making?**
+
+This question guides both the educational content and the interactive features.
+
+## 1.3 Project Concept
+
+The presentation follows a learning journey:
+
+**Discover → Explore → Design → Evaluate → Reflect**
+
+Visitors first learn about AI applications in fashion, then customize a digital garment, receive an algorithmic recommendation, and view a personalized summary.
+
+The project demonstrates the potential of digital technologies while acknowledging their practical and ethical limitations.
 
 ---
 
-## 4. Academic Rigor & Grounded AI Discourse
+# 2. Project Objectives
 
-To maintain university-level academic credibility, the presentation strictly avoids exaggerated marketing claims and unverified statistics:
-- **Virtual Try-On (VTON) Reality Check:** Accurately explains 2D garment re-targeting capabilities while candidly discussing current technical limits in fine fabric drape physics (wrinkles, sheer fabrics, dynamic movement, and extreme body poses).
-- **Intellectual Property & Legal Landscape:** Details the current stance of the US Copyright Office and global authorities regarding the lack of copyright for purely autonomous AI outputs, emphasizing human creative direction.
-- **Ecological Nuance in Fashion Tech:** Analyzes how AI-driven demand forecasting and digital 3D sampling mitigate physical fabric waste, while acknowledging the energy footprint of training/inference data centers and the broader socio-economic drivers of fast-fashion consumption.
-- **Zero Fabricated Citations:** All concepts are grounded in established computer vision, generative AI paradigms, and fashion manufacturing practices without synthetic numbers.
+## 2.1 Educational Objectives
 
-### 3.3 Typography
-- **Slide Headings & Hero Titles (Latin):** High-fashion editorial display serif:
-  - Primary: `Cormorant Garamond` or `Playfair Display` (font-weight: 400, 600; uppercase tracking).
-- **Hebrew Body & Narrative Content:** Elegant, highly readable modern Hebrew typography:
-  - Primary: `Assistant` or `Heebo` with fallback to system sans-serif.
-- **Code & Python Engine Displays:** Clean monospace:
-  - Primary: `JetBrains Mono` or `Fira Code`.
+The project aims to:
 
-### 3.4 Motion & Layout System
-- **Layout:** Minimalist grid layouts, asymmetric editorial placements, generous margin padding (`clamp(2rem, 5vw, 6rem)`).
-- **Transitions:** Soft fade and subtle horizontal slide (`0.6s cubic-bezier(0.16, 1, 0.3, 1)`).
-- **Interactive Micro-animations:** Delicate hover lifts, champagne border glows, smooth 3D orbit controls.
+1. Introduce the role of artificial intelligence in fashion design.
+2. Explain selected generative AI technologies and their applications.
+3. Demonstrate digital garment customization through interactive 3D visualization.
+4. Show how a transparent recommendation algorithm can evaluate user preferences.
+5. Encourage critical thinking about sustainability, originality, copyright, and algorithmic bias.
+6. Emphasize the continued importance of human creative judgment.
 
----
+## 2.2 Technical Objectives
 
-## 4. Language, BiDi, and RTL Architecture
+The project was planned to satisfy the course's technical requirements:
 
-### 4.1 Hybrid Language Model
-- **Slide Titles & Badges:** English (e.g., *WELCOME TO THE FUTURE OF FASHION*, *THE VIRTUAL FITTING ROOM*) to maintain international fashion editorial styling.
-- **Narrative, Explanations & UI Labels:** High-register Hebrew (עברית עשירה ומדויקת) tailored for academic presentation.
-- **Code Blocks & Parameters:** English variables and comments with bilingual explanatory tooltips.
+| Requirement | Planned Implementation |
+|---|---|
+| HTML presentation | Approximately ten educational slides |
+| JavaScript | Navigation, controls, interactions and application state |
+| Python | Functional recommendation algorithm |
+| Animated 3D element | Interactive garment visualization using Three.js |
+| Individual design decisions | Custom visual identity and content refinements |
+| Project documentation | README, PRD and development log |
+| Version control | Git commits and GitHub repository |
+| Accessibility of the project | Public presentation link |
 
-### 4.2 BiDi / RTL Technical Rules
-- The document root or primary content container specifies `dir="rtl"` and `lang="he"`.
-- English titles and code snippets must be wrapped in explicit BiDi containers (`dir="ltr"` or `<bdi>` tags) to prevent punctuation flips and parentheses errors.
-- Navigation controls (Next/Previous) must correctly correspond to RTL conventions (Right = Forward / Next, Left = Back / Previous, or intuitive directional markers).
-- Proper flexbox/grid logical properties (`margin-inline-start`, `padding-inline-end`) ensure bullet points, icons, and badges render without alignment bugs.
+## 2.3 Development Objectives
 
----
+An additional objective was to practice AI-assisted development as an iterative process.
 
-## 5. Slide-by-Slide Content & Interactive Specification
+The development process was intended to include:
 
-The presentation is structured into **10 distinct slides**:
+- Planning requirements before implementation.
+- Providing clear instructions to AI development tools.
+- Reviewing generated results.
+- Identifying problems.
+- Requesting corrections.
+- Testing functionality.
+- Documenting changes and decisions.
 
-```
-[01: Welcome] ──> [02: Sketch to Algo] ──> [03: Can AI Design?] ──> [04: AI Stylist]
-      │
-      ▼
-[05: Virtual Fitting] ──> [06: 3D Garment Customizer (Interactive)]
-      │
-      ▼
-[07: Smart Fashion Engine (Python/Pyodide)] ──> [08: Sustainable Fashion]
-      │
-      ▼
-[09: Human Behind Algo] ──> [10: Your Fashion Future (Summary & Wrap-up)]
-```
+The project was not intended to demonstrate only what AI tools can generate, but also how human direction affects the final result.
 
 ---
 
-### Slide 1: Welcome to the Future of Fashion
-* **English Title:** *WELCOME TO THE FUTURE OF FASHION*
-* **Hebrew Subtitle:** מפגש הפסגה בין קוטור עילי, בינה מלאכותית יוצרת וטכנולוגיית העתיד
-* **Editorial Content (Hebrew):**
-  - מבוא לחוויית ה-AI Fashion Lab: כיצד אלגוריתמים הופכים לשותפים ליצירה (Co-creators) בעולם האופנה.
-  - סקירת המהפכה: מתחזיות טרנדים מבוססות Big Data ועד תצוגות אופנה שנוצרו במלואן על גבי מחשב.
-  - הכרזה על חלקי המצגת: ידע תיאורטי, סטודיו תלת-ממדי אינטראקטיבי, ומנוע המלצות מבוסס פייתון.
-* **Visual / UI Elements:**
-  - Hero editorial layout with large high-fashion typography.
-  - Subtle animated floating elements or ambient particle canvas.
-  - "Start Experience" / "התחלת הסיור" primary call to action.
+# 3. Target Audience
+
+The presentation is intended for three main audiences.
+
+### Course Lecturer and Evaluators
+
+The project should demonstrate technical implementation, design decisions, critical evaluation, and documented development progress.
+
+### Students and Learners
+
+The presentation should make AI concepts understandable through accessible explanations and interactive experiences.
+
+### Fashion and Technology Enthusiasts
+
+The experience should be visually engaging and demonstrate the relationship between fashion, personalization, and digital technologies.
 
 ---
 
-### Slide 2: From Sketch to Algorithm
-* **English Title:** *FROM SKETCH TO ALGORITHM*
-* **Hebrew Subtitle:** האבולוציה של הרישום: ממחברת המעצב למודלי דיפוזיה
-* **Editorial Content (Hebrew):**
-  - כיצד מעצבים עוברים מסקיצות ידניות להנחיות טקסטואליות (Prompts) ומודלי תמונה-לתמונה (Image-to-Image).
-  - סקירת מודלים יוצרים מובילים: Stable Diffusion, Midjourney, Flux, ControlNet המאפשר שליטה מדויקת בקפלי בד וסילואטים.
-  - מעגל הפיתוח: קיצור זמני יצירת אב-טיפוס (Prototyping) מחודשים לשעות ספורות.
-* **Visual / UI Elements:**
-  - Side-by-side editorial comparison: סקיצת עיפרון קלאסית לעומת פלט פוטוריאליסטי שנוצר על ידי AI.
-  - Interactive "Prompt Breakdown" pill tags showcasing prompt engineering for fabric textures (e.g., *duchess satin*, *structural pleats*, *iridescent organza*).
+# 4. Design Concept and Visual Identity
+
+## 4.1 Design Direction
+
+The selected visual direction is:
+
+**Luxury, bright, clean, and inspired by fashion editorial magazines.**
+
+The interface is intended to resemble a digital fashion publication rather than a traditional academic slide deck.
+
+The design emphasizes:
+
+- Elegant typography.
+- Large fashion imagery.
+- Spacious layouts.
+- Clear visual hierarchy.
+- Minimalist interface controls.
+- Soft transitions.
+- Consistency between content and appearance.
+
+## 4.2 Color Palette
+
+| Color | Hex Code | Application |
+|---|---|---|
+| Ivory | `#FDFBF7` | Primary backgrounds |
+| Warm Alabaster | `#F7F4ED` | Secondary backgrounds and cards |
+| Champagne Gold | `#C5A059` | Highlights and interface accents |
+| Soft Lilac | `#D8CFF2` | Secondary accent color |
+| Obsidian Noir | `#141414` | Main text and strong contrast |
+
+The colors were selected to create a refined appearance associated with high-fashion editorial design.
+
+## 4.3 Typography
+
+The intended typography combines:
+
+- Elegant serif fonts for English editorial headings.
+- Clear, readable typography for Hebrew explanations.
+- Monospaced typography for code examples and technical information.
+
+The primary objective is to maintain readability while supporting the visual identity.
+
+## 4.4 Layout Principles
+
+The presentation uses:
+
+- Varied editorial compositions.
+- A clear distinction between headings and explanatory text.
+- Large visual elements.
+- Consistent navigation.
+- Responsive layout techniques.
+- Right-to-left support for Hebrew content.
+
+Each slide has its own visual composition while remaining part of the same design system.
 
 ---
 
-### Slide 3: Can AI Be a Fashion Designer?
-* **English Title:** *CAN AI BE A FASHION DESIGNER?*
-* **Hebrew Subtitle:** יצירתיות מלאכותית מול מגע יד אנושי: גבולות היצירה והמשפט
-* **Editorial Content (Hebrew):**
-  - הדיון הפילוסופי והמקצועי: האם AI באמת "מעצב" או שמא הוא מבצע אינטרפולציה מורכבת של היסטוריית האופנה?
-  - שאלת זכויות היוצרים (Copyright) וקניין רוחני: של מי הדגם – של מהנדס הפרומפט, של המפתח, או של המעצבים ששימשו לאימון המודל?
-  - מקרי בוחן בעולם האמיתי: שבוע האופנה הדיגיטלי (AI Fashion Week ב-NY), שיתופי פעולה בין בתי אופנה (כגון Moncler, Zegna) למעצבי AI.
-* **Visual / UI Elements:**
-  - Debate interactive toggle: "הטיעון ליצירתיות אלגוריתמית" מול "מגבלות האינטואיציה והרגש האנושי".
-  - Editorial quote cards highlighting industry perspectives.
+# 5. Language and Accessibility Requirements
+
+## 5.1 Language Structure
+
+The presentation combines two languages:
+
+**English:** Main slide titles, selected editorial labels, and technical terminology.
+
+**Hebrew:** Educational explanations, descriptions, and most interactive instructions.
+
+This combination supports the fashion editorial theme while keeping the educational content accessible to Hebrew-speaking users.
+
+## 5.2 Right-to-Left Support
+
+The interface must support:
+
+- Correct Hebrew text direction.
+- Proper alignment of text and controls.
+- Correct display of English terminology within Hebrew sentences.
+- Consistent positioning of navigation elements.
+- Readable presentation of numerical values and code.
+
+## 5.3 Responsive Design
+
+The primary design environment is a desktop browser.
+
+The website should also support smaller screens by adapting text sizes, spacing, and layout structure.
+
+The project includes mobile screenshots as development evidence. Additional device testing remains a possible improvement.
 
 ---
 
-### Slide 4: Your Personal AI Stylist
-* **English Title:** *YOUR PERSONAL AI STYLIST*
-* **Hebrew Subtitle:** מסטייליסט אישי לעילית – לבינה מלאכותית מותאמת אישית לכל אדם
-* **Editorial Content (Hebrew):**
-  - כיצד מודלי שפה רב-מודאליים (Multimodal LLMs) משלבים ראייה ממוחשבת עם הבנת שפה כדי לנתח מלתחה קיימת.
-  - ניתוח מבנה גוף, תורת הצבעים (Seasonal Color Analysis), והתאמת לוקים לפי מזג אוויר, אירוע ומצב רוח.
-  - הפיכת חוויית הקניות מחיפוש פסיבי במנועי חיפוש לשיחה דיאלוגית אישית.
-* **Visual / UI Elements:**
-  - Simulation mockup of a luxury AI Stylist chat card analyzing an outfit palette and giving sophisticated recommendations.
+# 6. Presentation Structure
+
+The presentation contains ten slides.
+
+Each slide has a specific educational purpose and contributes to the overall learning experience.
+
+## Slide 1 — Welcome to the Future of Fashion
+
+**Purpose:** Introduce the relationship between artificial intelligence, fashion, and creativity.
+
+**Main Content:**
+
+- Introduction to the project's central theme.
+- How AI technologies are becoming part of creative processes.
+- The relationship between human creativity and computational tools.
+
+**Design Elements:**
+
+- Large editorial headline.
+- Fashion imagery.
+- Minimalist opening composition.
+- Consistent presentation branding.
+
+**Expected Outcome:** The visitor understands the subject and visual direction of the experience.
 
 ---
 
-### Slide 5: The Virtual Fitting Room
-* **English Title:** *THE VIRTUAL FITTING ROOM*
-* **Hebrew Subtitle:** חדר ההלבשה הווירטואלי: פיזיקה של בדים, סריקות תלת-ממד וטכנולוגיית VTON
-* **Editorial Content (Hebrew):**
-  - הטכנולוגיה מאחורי הניסוי הווירטואלי: Virtual Try-On Networks (VTON), Neural Radiance Fields (NeRFs), 3D Gaussian Splatting.
-  - הדמיית פיזיקה של טקסטיל: הדמיית נפילה של משי, קשיחות של עור ותנועת צמר בזמן תנועה אמיתית.
-  - הפחתת אחוזי החזרות מוצרים במסחר אלקטרוני: יתרון כלכלי וסביבתי עצום לרשתות האופנה.
-* **Visual / UI Elements:**
-  - Visual diagram explaining the 3-stage VTON pipeline (Body Mesh Extraction -> Garment Warping -> Texture & Lighting Blending).
+## Slide 2 — From Sketch to Algorithm
+
+**Purpose:** Explain how digital and generative tools can support fashion design.
+
+**Main Content:**
+
+- Traditional fashion sketching.
+- Text prompts and image-generation models.
+- Diffusion models.
+- ControlNet and guided generation.
+- Digital concept exploration.
+
+**Design Elements:**
+
+- A visual design-process sequence.
+- Fashion imagery.
+- An example of an AI image-generation prompt.
+- Short educational explanations.
+
+**Expected Outcome:** The visitor understands how AI-generated imagery can become part of the fashion ideation process.
+
+**Limitation:** Generated images represent design concepts and are not equivalent to manufacturing-ready garment specifications.
 
 ---
 
-### Slide 6: Design Your Digital Look (Interactive 3D Studio)
-* **English Title:** *DESIGN YOUR DIGITAL LOOK*
-* **Hebrew Subtitle:** סטודיו דיגיטלי אינטראקטיבי: התאמה אישית של בגד בתלת-ממד
-* **Interactive Core:** **Three.js WebGL 3D Garment Customizer**
-* **Functionality:**
-  - Real-time 3D rendering of a luxury digital garment (haute-couture mannequin/dress silhouette with dynamic lighting).
-  - **Color Palette Picker:** Champagne Gold, Soft Lilac, Obsidian Noir, Pure Ivory, Midnight Emerald.
-  - **Fabric / Material Finish:** Silk Sheen (specular), Matte Cotton (roughness), Velvet/Organza effect.
-  - **Silhouettes / Cuts:** Minimalist Shift, Sculptural Avant-Garde, Flowing Evening Drape.
-  - **Interactive Controls:** Smooth rotation (OrbitControls), zoom, lighting intensity toggle.
-* **Connection to Simulation:** Selected parameters (silhouette, color, style mood) are saved to the user's active session state for Slide 7.
+## Slide 3 — Can AI Be a Fashion Designer?
+
+**Purpose:** Examine the relationship between algorithmic generation and human creativity.
+
+**Main Content:**
+
+- AI-generated creative concepts.
+- Human authorship.
+- Originality.
+- Copyright questions.
+- The importance of cultural context and artistic intention.
+
+**Design Elements:**
+
+- Editorial debate format.
+- Comparison between algorithmic possibilities and human contributions.
+- Fashion imagery and short explanatory sections.
+
+**Expected Outcome:** The visitor is encouraged to consider the role of human designers in AI-assisted creative processes.
 
 ---
 
-### Slide 7: The Smart Fashion Engine (Python / Pyodide)
-* **English Title:** *THE SMART FASHION ENGINE*
-* **Hebrew Subtitle:** מנוע ההמלצות: הרצת אלגוריתם פייתון שקוף בדפדפן
-* **Interactive Core:** **In-Browser Python via Pyodide**
-* **Functionality:**
-  - **User Inputs:**
-    - Fashion Style (Minimalist Chic, Avant-Garde Luxury, Streetwear Couture, Romantic Bohemian).
-    - Color Preference (matches chosen 3D look or custom selection).
-    - Budget Tier (Accessible Luxury, Premium Couture, High Fashion Collector).
-    - Occasion / Vibe (Gala Event, Creative Office, Runway Premiere).
-  - **Python Execution:**
-    - Runs genuine Python code loaded in WebAssembly (Pyodide).
-    - Executes a deterministic multi-attribute scoring matrix evaluating compatibility, palette harmony, and budget matching.
-  - **Educational Code Inspector:**
-    - View the actual Python source code executing in real time.
-    - Inspect the transparent score breakdown (e.g., `Style Match: +35pts`, `Color Harmony: +25pts`, `Budget Alignment: +20pts`).
-    - Explicit disclaimer box: *"Educational simulation – rule-based scoring demonstrates algorithmic decision transparency without black-box opacity."*
+## Slide 4 — Your Personal AI Stylist
+
+**Purpose:** Introduce the concept of AI-assisted personalization in fashion.
+
+**Main Content:**
+
+- Personalized recommendations.
+- User preferences.
+- Visual analysis.
+- Style selection.
+- Contextual factors such as occasions and clothing preferences.
+
+**Design Elements:**
+
+- A simulated personal stylist interface.
+- Fashion color palette.
+- Visual recommendation card.
+- Illustrative compatibility information.
+
+**Expected Outcome:** The visitor understands how digital systems may combine different inputs to generate personalized recommendations.
+
+**Important Limitation:** Compatibility values shown in this educational illustration are examples, not validated measurements.
 
 ---
 
-### Slide 8: Can AI Make Fashion More Sustainable?
-* **English Title:** *CAN AI MAKE FASHION MORE SUSTAINABLE?*
-* **Hebrew Subtitle:** קיימות חכמה: צמצום פסולת, חיזוי ביקושים וייצור לפי דרישה
-* **Editorial Content (Hebrew):**
-  - תעשיית האופנה המהירה כאחד המזהמים הגדולים בעולם (עודפי ייצור והטמנת בדים).
-  - כיצד בינה מלאכותית מסייעת בחיזוי ביקושים מדויק למניעת ייצור יתר (Zero Overproduction).
-  - חיתוך גזרות ממוחשב (Zero-waste pattern engineering) החוסך עד 30% משאריות בד.
-  - יצירת דגימות דיגיטליות (Digital sampling) במקום משלוח מאות דוגמאות פיזיות מעבר לים.
-* **Visual / UI Elements:**
-  - Infographic counters / metrics: 92M tons of waste prevented, 30% fabric optimization, 65% return reduction.
+## Slide 5 — The Virtual Fitting Room
+
+**Purpose:** Explain the concept of virtual garment fitting.
+
+**Main Content:**
+
+- Virtual Try-On technology.
+- Body and pose analysis.
+- Digital garment positioning.
+- Image generation and blending.
+- Limitations of simulated garment appearance.
+
+**Design Elements:**
+
+- Virtual fitting illustration.
+- Technology explanation.
+- A visual sequence describing the general process.
+
+**Expected Outcome:** The visitor understands the basic idea behind virtual try-on systems and recognizes the difference between a visual demonstration and accurate physical fit measurement.
+
+**Important Limitation:** The project does not perform real body scanning or accurate clothing-size measurement.
 
 ---
 
-### Slide 9: The Human Behind the Algorithm
-* **English Title:** *THE HUMAN BEHIND THE ALGORITHM*
-* **Hebrew Subtitle:** האדם שמאחורי האלגוריתם: אומנות מסורתית, אתיקה והטיה בנתונים
-* **Editorial Content (Hebrew):**
-  - שימור מלאכות יד מסורתיות (Artisanal Craftsmanship) בעידן של סינתזה דיגיטלית.
-  - סוגיית ההטיות התרבותיות (Cultural & Body Bias) במאגרי התמונות המשמשים לאימון מודלים.
-  - העתיד הוא סימביוטי: המעצב האנושי כמוביל חזון, ביקורת ואמפתיה, והאלגוריתם כמנוע מאיץ ומפרה.
-* **Visual / UI Elements:**
-  - Editorial dual-portrait layout: ידי חייט מיומנות תופרות תפר מסורתי לצד רשת נוירונים דיגיטלית זוהרת.
+## Slide 6 — Design Your Digital Look
+
+**Purpose:** Allow visitors to interact with a three-dimensional garment.
+
+**Technology:** Three.js and JavaScript.
+
+### Functional Requirements
+
+The system should display a three-dimensional garment.
+
+The user should be able to:
+
+- Change the garment's color.
+- Select different fabric appearances.
+- Choose different silhouettes.
+- Rotate the model to explore its shape.
+- Observe visual updates following selection changes.
+
+### User Experience
+
+The 3D garment should be displayed prominently.
+
+Customization controls should be understandable and visually consistent with the rest of the presentation.
+
+### Integration Requirement
+
+The selected garment characteristics should be available to the recommendation engine in Slide 7.
+
+### Expected Outcome
+
+The user experiences interactive digital fashion design rather than viewing a static image.
+
+### Technical Limitation
+
+The garment is a procedural three-dimensional visualization.
+
+It does not provide physically accurate cloth simulation or verified garment fit.
 
 ---
 
-### Slide 10: Your Fashion Future
-* **English Title:** *YOUR FASHION FUTURE*
-* **Hebrew Subtitle:** סיכום החוויה האישית: הלוק הדיגיטלי והתובנות שלך לעתיד
-* **Editorial Content & Final Recap (Hebrew):**
-  - הצגת "תעודת הלוק הדיגיטלי" (Digital Look Passport): סיכום הבגד שנבחר בתלת-ממד + תוצאות מנוע ה-Python.
-  - מסקנות מרכזיות מהפרויקט: AI ככלי שמעצים יצירתיות, משפר שקיפות ומחבר בין טכנולוגיה לביטוי אישי.
-  - אפשרות לשיתוף או הדפסה של סיכום הלוק האישי.
-* **Visual / UI Elements:**
-  - High-fashion summary card with badge of selected style, recommended item, 3D garment snapshot preview, and Python score.
-  - Presentation restart and GitHub project link buttons.
+## Slide 7 — The Smart Fashion Engine
+
+**Purpose:** Demonstrate a meaningful practical use of Python within the presentation.
+
+### Functional Overview
+
+The recommendation engine evaluates user preferences and produces a suggested fashion look.
+
+The algorithm is implemented in:
+
+`python/recommender.py`
+
+### User Inputs
+
+The system accepts:
+
+- Preferred fashion style.
+- Target occasion.
+- Budget category.
+- Garment color.
+- Fabric.
+- Silhouette.
+
+### Recommendation Process
+
+The algorithm compares user preferences against a curated catalog of fashion looks.
+
+Each candidate receives a compatibility score based on predefined weighted rules.
+
+### Scoring Matrix
+
+| Criterion | Maximum Points |
+|---|---:|
+| Style compatibility | 35 |
+| Occasion and silhouette | 30 |
+| Color and fabric compatibility | 20 |
+| Budget alignment | 15 |
+| **Total** | **100** |
+
+### Expected Output
+
+The system should display:
+
+- A recommended fashion look.
+- A total compatibility score.
+- An explanation of the recommendation.
+- A breakdown of the scoring components.
+
+### Technical Architecture
+
+The Python source contains the reference implementation of the scoring algorithm.
+
+During development, browser-based Python execution through Pyodide presented initialization problems.
+
+The implementation was therefore adapted to support:
+
+1. **Native Python execution through a local server.**
+2. **Public website execution through Pyodide when available, with a JavaScript fallback.**
+
+The public version may use JavaScript if Pyodide does not initialize successfully.
+
+### Educational Limitation
+
+The recommendation engine is a deterministic, rule-based simulation.
+
+It is not a trained machine-learning model, and its scores are not predictions validated against real customer behavior.
+
+### Expected Outcome
+
+The user understands how programming can process multiple inputs, apply rules, and generate a personalized recommendation.
 
 ---
 
-## 6. Educational Scope vs. Simulation Boundary
+## Slide 8 — Can AI Make Fashion More Sustainable?
 
-To ensure strict academic transparency, the presentation establishes a clear demarcation:
+**Purpose:** Explore the potential contribution of AI and digital technology to sustainability in fashion.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                      AI FASHION LAB ARCHITECTURE                       │
-├──────────────────────────────────┬─────────────────────────────────────┤
-│   REAL AI TECHNOLOGIES           │   PROJECT SIMULATION ENGINE         │
-│   (Educational Discourse)        │   (Tactile In-Browser Demo)         │
-├──────────────────────────────────┼─────────────────────────────────────┤
-│ • Diffusion Models (Flux, SD)    │ • Pure Python 3.11 via Pyodide      │
-│ • Multimodal LLMs (GPT-4V,       │ • Deterministic Multi-factor        │
-│   Gemini 1.5 Pro)                │   scoring matrix                    │
-│ • NeRFs & 3D Gaussian Splatting  │ • Transparent weighting rules       │
-│ • VTON (Virtual Try-On Networks) │ • Real-time code execution viewer   │
-│ • Computer Vision color analysis │ • Three.js WebGL procedural shaders │
-│                                  │   (not generative neural mesh)      │
-└──────────────────────────────────┴─────────────────────────────────────┘
-```
+**Main Content:**
 
-A visible indicator badge (`[מערכת סימולציה לימודית]` / `[Educational Simulation]`) will accompany all interactive tools to prevent any ambiguity between industry deep learning models and our accessible, client-side scoring logic.
+- Overproduction and textile waste.
+- Demand forecasting.
+- Digital sampling.
+- Pattern optimization.
+- Resource efficiency.
+- Environmental limitations of computational technologies.
+
+**Design Elements:**
+
+- Editorial sustainability illustrations.
+- Short informational sections.
+- Visual explanation of different technological applications.
+
+**Expected Outcome:** The visitor understands that digital technologies may improve resource efficiency but do not independently solve environmental challenges.
 
 ---
 
-## 7. Technical Architecture & Tech Stack
+## Slide 9 — The Human Behind the Algorithm
 
-### 7.1 Core Stack
-| Layer | Technology | Role & Justification |
-| :--- | :--- | :--- |
-| **Markup** | Modern Semantic HTML5 | Slide sections, BiDi wrappers, accessible navigation |
-| **Styles** | Modern CSS3 (Grid, Flexbox, Custom Properties) | Editorial typography, responsive design, smooth animations |
-| **Presentation Logic**| Vanilla JavaScript (ES6+ Modules) | Slide routing, keyboard shortcuts, UI state management |
-| **3D Rendering** | Three.js (r128+ via CDN) | Interactive 3D garment model with PBR materials and orbit controls |
-| **Python Engine** | Pyodide (v0.26+ via CDN) | Full WebAssembly Python runtime executing recommendation code in browser |
+**Purpose:** Emphasize the importance of human responsibility and creativity.
 
-### 7.2 Key Architectural Components
-1. **Slide Navigator (`SlideController`):**
-   - Manages active slide index (1 to 10).
-   - Supports keyboard arrow keys (Left/Right), touch swipe, and bottom navigation indicator dots.
-   - Smooth transition states preventing layout jumps.
-2. **3D Garment Studio (`GarmentStudio3D`):**
-   - WebGL renderer encapsulated within Slide 6 container.
-   - Procedural or lightweight luxury mannequin/dress geometry with customizable specular/roughness shaders.
-   - Orbit controls with constrained polar angles for a curated editorial frame.
-   - Dynamic color and material parameter updates without canvas re-initialization.
-3. **Pyodide Recommendation Manager (`FashionEngine`):**
-   - Asynchronously initializes the Pyodide WebAssembly worker/runtime on demand or during slide 5 preload.
-   - Passes user options (style, budget, color) into a Python script.
-   - Executes transparent rule-based algorithm:
-     ```python
-     # Concept logic in Pyodide
-     def evaluate_recommendation(style, color, budget, occasion):
-         scores = {}
-         for item in catalog:
-             scores[item['id']] = calculate_affinity(item, style, color, budget, occasion)
-         return select_top_outfit(scores)
-     ```
-   - Returns structured JSON to JavaScript to display live result cards and score breakdowns.
+**Main Content:**
+
+- Traditional craftsmanship.
+- Human creativity.
+- Cultural context.
+- Bias in AI-generated outputs.
+- Representation of different body types and cultural backgrounds.
+- Responsible use of technology.
+
+**Design Elements:**
+
+- Fashion craftsmanship imagery.
+- Editorial comparison between traditional and technological processes.
+- Short reflective explanations.
+
+**Expected Outcome:** The visitor recognizes that AI-assisted creativity still depends on human decisions and ethical considerations.
 
 ---
 
-## 8. User Interaction Flow
+## Slide 10 — Your Fashion Future
 
-```
-[Slide 1: Enter Experience]
-        │
-        ▼
-[Slides 2-5: Educational Exploration] (Interactive toggles, prompts, VTON diagram)
-        │
-        ▼
-[Slide 6: 3D Garment Customizer] ──> User chooses silhouette, material, and champagne/ivory/noir palette
-        │
-        ▼ (State saved)
-[Slide 7: Python Recommendation Engine] ──> User inputs budget, style persona & runs Pyodide script
-        │
-        ▼ (Scores computed live in Python)
-[Slides 8-9: Sustainability & Ethics]
-        │
-        ▼
-[Slide 10: Personalized Look Passport & Summary]
-```
+**Purpose:** Connect the interactive experience into a personalized final result.
 
----
+### Functional Requirements
 
-## 9. Deliverables, Git Workflow & Documentation
+The slide should present a digital fashion passport that uses information from the user's interaction with the previous slides.
 
-### 9.1 Required Project Artifacts
-1. `PRD.md` *(This Document)* – Comprehensive specification.
-2. `index.html` – Single-page multi-slide editorial application.
-3. `css/` – Modular stylesheets (`variables.css`, `typography.css`, `layout.css`, `editorial.css`, `components.css`).
-4. `js/` – Modular JavaScript (`main.js`, `slider.js`, `three-garment.js`, `python-engine.js`).
-5. `python/` – Standalone clean `recommender.py` source script mirrored for Pyodide execution.
-6. `README.md` – High-caliber documentation including:
-   - Project concept and architecture overview.
-   - Screenshots of all major slides and the 3D customizer.
-   - Clear distinction between real GenAI concepts and the Pyodide simulation engine.
-   - Complete prompt history and agentic interaction log.
-   - Running instructions (local HTTP server or direct browser open).
+The passport should display relevant information such as:
 
-### 9.2 Git Strategy
-- Incremental, atomic commits documenting every phase of the project:
-  - `docs: create comprehensive PRD for AI Fashion Lab presentation`
-  - `feat: initialize editorial HTML scaffold and luxury styling system`
-  - `feat: implement slide navigation system with RTL/BiDi support`
-  - `feat: integrate Three.js interactive 3D garment customizer`
-  - `feat: embed Pyodide in-browser Python recommendation engine`
-  - `content: complete Hebrew editorial narratives and English slide titles`
-  - `docs: produce professional README with screenshots and prompt logs`
+- Selected garment characteristics.
+- Recommended fashion look.
+- Compatibility score.
+- Personal styling information.
+
+### Interactive Requirements
+
+The user should be able to:
+
+- View the personalized result.
+- Return to the recommendation experience when necessary.
+- Print the fashion passport.
+- Restart the presentation.
+
+### Integration Requirements
+
+Slide 10 should use the latest successfully calculated recommendation rather than displaying a fixed example.
+
+If no recommendation has been calculated, the interface should display an informative empty state.
+
+### Expected Outcome
+
+The visitor completes a connected journey from learning about AI to exploring digital fashion and reviewing a personalized result.
+
+### Technical Limitation
+
+The passport summarizes an educational recommendation simulation rather than providing a validated real-world styling assessment.
 
 ---
 
-## 10. Success Metrics & Verification Checklist
+# 7. Technical Architecture
 
-- [x] **PRD Approved:** Complete coverage of goals, audience, visual direction, slides, and tech stack.
-- [x] **Aesthetic Integrity:** High-fashion luxury editorial feel with ivory, cream, champagne, and lilac accents.
-- [x] **RTL / BiDi Robustness:** Flawless Hebrew rendering with properly aligned English titles and zero punctuation glitches.
-- [x] **Three.js Customizer:** Smooth 60fps 3D garment rendering with responsive interaction on modern viewports (Milestone 2 completed).
-- [ ] **Pyodide Execution:** Real Python code running synchronously or asynchronously in-browser, generating visible score breakdowns (Milestone 3).
-- [x] **Clarity of AI vs. Simulation:** Visible educational badge distinguishing real GenAI models from the rule-based simulation.
-- [x] **Responsive Design:** Seamless experience across desktop (primary) and mobile/tablet devices.
-- [ ] **Documentation:** Thorough `README.md` containing prompt history, screenshots, and setup instructions.
+## 7.1 Technology Stack
 
+| Layer | Technology | Purpose |
+|---|---|---|
+| Presentation structure | HTML5 | Ten-slide educational presentation |
+| Styling | CSS3 | Editorial design and responsive layouts |
+| Navigation and controls | JavaScript | User interactions and slide management |
+| 3D visualization | Three.js | Interactive garment studio |
+| Recommendation logic | Python 3 | Rule-based scoring algorithm |
+| Local execution | Python HTTP server | Execute the recommendation algorithm locally |
+| Browser Python option | Pyodide | Attempt Python execution in WebAssembly |
+| Public fallback | JavaScript | Recommendation functionality when Pyodide is unavailable |
+| Version control | Git | Record development changes |
+| Repository hosting | GitHub | Store project files and documentation |
+| Public website | GitHub Pages | Publish the interactive presentation |
 
-## Deployment implementation addendum (2026-11-03)
+## 7.2 Main Project Files
 
-Due to reproducible Pyodide initialization failures in the development environment,
-the reliable **public demo** uses native server-side Python via `server.py` hosted
-on Render. This is a documented divergence from the preferred browser-embedded
-Pyodide architecture. The same `python/recommender.py` runs in both local and
-hosted native Python mode; Pyodide is an unverified fallback on static hosting.
-The final presentation must accurately label the active execution mode and must
-not claim the server-based engine runs inside the visitor's browser.
+| File or Folder | Purpose |
+|---|---|
+| `index.html` | Main presentation |
+| `css/style.css` | Styling and responsive design |
+| `js/slider.js` | Presentation navigation |
+| `js/app.js` | Application interactions |
+| `js/three-studio.js` | 3D garment customization |
+| `js/python-engine.js` | Recommendation interface and runtime management |
+| `js/static-recommender.js` | Static-site recommendation fallback |
+| `js/passport.js` | Digital fashion passport integration |
+| `python/recommender.py` | Python recommendation algorithm |
+| `server.py` | Native Python execution through a local server |
+| `tests/` | Automated tests |
+| `screenshots/` | Visual documentation |
+| `README.md` | Main project explanation and instructions |
+| `PRD.md` | Project requirements and planning |
+| `prompts/development-log.md` | Development process and prompt documentation |
+
+## 7.3 Application State
+
+The interactive features require the application to maintain user selections across different slides.
+
+Important shared information includes:
+
+- Selected garment color.
+- Selected silhouette.
+- Selected fabric.
+- User style preferences.
+- Occasion.
+- Budget.
+- Latest successful recommendation.
+
+The digital fashion passport should present the latest relevant result.
+
+---
+
+# 8. User Interaction Flow
+
+The intended user journey follows these stages:
+
+### Stage 1 — Learn
+
+The visitor explores Slides 1–5 to learn about AI technologies and their applications in fashion.
+
+### Stage 2 — Design
+
+On Slide 6, the visitor customizes a three-dimensional garment.
+
+The selected characteristics become part of the interactive experience.
+
+### Stage 3 — Evaluate
+
+On Slide 7, the visitor chooses additional preferences and runs the recommendation engine.
+
+The system evaluates the inputs and presents a result.
+
+### Stage 4 — Reflect
+
+Slides 8 and 9 introduce sustainability, ethics, and human creativity.
+
+### Stage 5 — Review
+
+On Slide 10, the visitor receives a personalized digital fashion passport.
+
+The final result connects the earlier interactive selections into one summary.
+
+---
+
+# 9. Development Methodology
+
+## 9.1 AI-Assisted Development
+
+The project was developed through AI-assisted planning, coding, review, and debugging.
+
+The intended workflow was:
+
+1. Define the project requirements.
+2. Create the initial PRD.
+3. Implement the HTML presentation.
+4. Review the visual design.
+5. Improve content and layout.
+6. Develop the Three.js component.
+7. Implement the Python recommendation engine.
+8. Connect the interactive features.
+9. Test and correct errors.
+10. Publish and document the project.
+
+## 9.2 Human Evaluation and Feedback
+
+The development process included repeated review of AI-generated output.
+
+Important areas of feedback included:
+
+- Visual appearance.
+- Content density.
+- Image selection.
+- Interaction design.
+- Python execution problems.
+- Synchronization between interactive slides.
+- Public deployment limitations.
+
+The process was intended to demonstrate that AI-assisted development requires continued human evaluation.
+
+## 9.3 Version Control
+
+Git was used to preserve development milestones.
+
+The original local history includes commits for:
+
+- PRD creation.
+- Initial presentation.
+- Visual improvements.
+- Three.js implementation.
+- Public deployment preparation.
+
+These commits are available in the repository's separate `development-history` branch.
+
+[View Original Development History](https://github.com/hadarAmar/AI-Fashion-Lab/commits/development-history)
+
+The public website is maintained on the `main` branch.
+
+[View Main Branch History](https://github.com/hadarAmar/AI-Fashion-Lab/commits/main)
+
+The original local development commits were uploaded to the separate branch after the public repository had been established.
+
+---
+
+# 10. Functional Verification and Acceptance Criteria
+
+The project should be evaluated according to the following criteria.
+
+| Criterion | Expected Result | Documented Status |
+|---|---|---|
+| Ten-slide structure | Approximately ten educational slides | Implemented |
+| JavaScript navigation | Users can navigate between slides | Implemented |
+| 3D visualization | Interactive garment customization | Implemented |
+| Python source | Functional rule-based recommendation algorithm | Implemented |
+| Local Python execution | Recommendation calculated through `server.py` | Implemented |
+| Public presentation | Accessible through GitHub Pages | Published |
+| Static hosting compatibility | Recommendation remains usable through fallback | Implemented |
+| Recommendation breakdown | Score components are displayed | Implemented |
+| Passport integration | Latest result appears on Slide 10 | Implemented |
+| README | Project description, instructions and screenshots | Documented |
+| PRD | Planning and requirements | Documented |
+| Development history | Git commits and change history | Available |
+| Prompt documentation | Record of development discussions | Partial source-grounded record |
+
+### Testing
+
+The project includes automated tests for selected recommendation scenarios.
+
+The test command is:
+
+\`\`\`bash
+python3 -m unittest discover -s tests -v
+\`\`\`
+
+The tests verify aspects of the recommendation algorithm, including score calculations and input handling.
+
+Visual appearance, browser compatibility, responsive behavior, and the complete interactive experience require additional browser-level testing.
+
+Successful algorithm tests do not establish that every browser environment can execute Pyodide.
+
+---
+
+# 11. Deployment Requirements
+
+## 11.1 Public Deployment
+
+The published website is hosted through GitHub Pages:
+
+https://hadarAmar.github.io/AI-Fashion-Lab/
+
+The public version allows visitors to access the presentation without installing software.
+
+GitHub Pages does not execute the local Python server.
+
+For this reason, the public recommendation component may use Pyodide or the documented JavaScript fallback.
+
+## 11.2 Local Python Deployment
+
+The native Python version can be started locally.
+
+From the project directory:
+
+\`\`\`bash
+python3 server.py
+\`\`\`
+
+Then open:
+
+http://localhost:8000/
+
+The local server executes the recommendation algorithm implemented in Python.
+
+## 11.3 Implementation Change from the Original PRD
+
+The original technical plan prioritized direct Python execution in the browser through Pyodide.
+
+During development, this approach proved unreliable in the tested environment.
+
+The implementation was adapted to support a native Python server and an alternative static website execution path.
+
+This change was made to preserve a functioning interactive experience while retaining the actual Python implementation.
+
+The distinction is documented in the README and development log.
+
+---
+
+# 12. Academic and Technical Limitations
+
+The project is an educational demonstration.
+
+It should not be interpreted as a complete artificial intelligence fashion platform.
+
+Its main limitations are:
+
+1. The recommendation system is based on predefined rules rather than machine learning.
+2. The recommendation catalog is limited and illustrative.
+3. Compatibility scores do not represent verified predictions of personal preference.
+4. The 3D garment is a visual simulation without physically accurate fabric behavior.
+5. Virtual fitting illustrations do not provide real body measurements.
+6. The public website may execute JavaScript instead of Python when Pyodide is unavailable.
+7. Some screenshots represent earlier development stages.
+8. The complete original Antigravity conversation history is not available.
+9. Additional usability and accessibility testing could improve the experience.
+
+These limitations are documented to distinguish the project's demonstrations from real-world AI capabilities.
+
+---
+
+# 13. Future Improvements
+
+Potential future development could include:
+
+- More reliable browser-based Python execution.
+- More advanced 3D garment modeling.
+- Additional customization options.
+- A larger fashion recommendation catalog.
+- Usability testing with real participants.
+- Improved mobile layouts.
+- More comprehensive accessibility testing.
+- Greater transparency in recommendation explanations.
+- More detailed documentation of original AI development conversations.
+
+These improvements are outside the current implementation scope.
+
+---
+
+# 14. Project Deliverables
+
+The project repository contains the following main deliverables:
+
+### Interactive Presentation
+
+The completed HTML website with ten slides.
+
+### JavaScript Functionality
+
+Navigation, user controls, shared state, and recommendation integration.
+
+### Three.js Component
+
+Interactive garment visualization on Slide 6.
+
+### Python Component
+
+Rule-based recommendation algorithm and local execution path.
+
+### Project Documentation
+
+- `README.md`
+- `PRD.md`
+- `prompts/development-log.md`
+
+### Visual Documentation
+
+Screenshots of selected desktop and mobile presentation states.
+
+### Version History
+
+Development commits preserved through Git and GitHub.
+
+### Published Website
+
+A publicly accessible version through GitHub Pages.
+
+---
+
+# 15. Final Project Reflection
+
+AI Fashion Lab was planned as an interactive educational experience that combines fashion, creativity, and digital technology.
+
+The development process demonstrated the importance of moving beyond a static presentation and allowing users to interact with the concepts being discussed.
+
+The main technical challenges involved integrating multiple technologies, making the recommendation engine work reliably, and preserving information between slides.
+
+These challenges required reviewing results, identifying errors, and modifying the implementation.
+
+The project also demonstrated the importance of distinguishing between real AI technologies and educational simulations.
+
+**The central conclusion is that AI-assisted development can support creative and technical work, but successful results still require human direction, evaluation, and critical judgment.**
+
+---
+
+# 16. Project References and Documentation
+
+| Resource | Link |
+|---|---|
+| Live Presentation | [AI Fashion Lab](https://hadarAmar.github.io/AI-Fashion-Lab/) |
+| GitHub Repository | [Source Repository](https://github.com/hadarAmar/AI-Fashion-Lab) |
+| Main Project Documentation | [README.md](README.md) |
+| Prompt and Development History | [Development Log](prompts/development-log.md) |
+| Python Recommendation Engine | [recommender.py](python/recommender.py) |
+| Python Tests | [Recommendation Tests](tests/test_recommender.py) |
+| Original Git Commits | [Development History](https://github.com/hadarAmar/AI-Fashion-Lab/commits/development-history) |
+
+---
+
+**Document Status:** Final documentation of the project's requirements, implementation decisions, and known limitations.
+
+**Original PRD:** Created November 3, 2026.  
+**Updated Version:** November 8, 2026.
