@@ -1,102 +1,425 @@
-# AI Fashion Lab
+# AI FASHION LAB
+### The Future of Fashion & Artificial Intelligence
 
-Interactive Hebrew/English fashion editorial presentation about AI in fashion. 10 slides, JavaScript navigation, Three.js 3D garment studio, and a real Python rule-based recommendation demonstration.
+**An Interactive Educational Presentation**
 
-## Running locally
+**Course:** Generative Artificial Intelligence  
+**Lecturer:** Dr. Yoram Segal  
+**Student:** Hadar Amar  
+**Institution:** Bar-Ilan University
 
-From the repository root:
+### [VIEW THE LIVE PRESENTATION](https://hadarAmar.github.io/AI-Fashion-Lab/)
+
+![AI Fashion Lab – Opening Slide](screenshots/desktop-slide1.png)
+
+---
+
+## 1. Project Overview
+
+**AI Fashion Lab** is an interactive HTML presentation exploring how artificial intelligence is influencing the fashion industry, from the creative design process to personalized styling, virtual fitting and sustainability.
+
+The project was developed as part of a Generative Artificial Intelligence course.
+
+Rather than creating a conventional presentation containing only text and images, I wanted to build an experience in which users could interact with the technology being discussed.
+
+The presentation combines ten educational slides with JavaScript interactions, a Three.js digital garment studio and a Python recommendation algorithm.
+
+The central question guiding the project is:
+
+**How can artificial intelligence support creative processes in fashion while preserving human creativity and decision-making?**
+
+The project examines this question both theoretically and through interactive demonstrations.
+
+---
+
+## 2. Project Goals
+
+The main objectives of the project were:
+
+- Explore practical applications of artificial intelligence in the fashion industry.
+- Present complex technological concepts in an accessible and visually engaging format.
+- Demonstrate how interactive 3D technology can support the design process.
+- Use Python to perform a meaningful recommendation calculation.
+- Create a coherent experience connecting different interactive elements.
+- Explore the advantages, limitations and ethical challenges of AI in creative industries.
+- Practice AI-assisted development through planning, testing, feedback and improvement.
+
+The goal was not to build a commercial fashion application, but to demonstrate how digital tools can be used to explore and communicate ideas.
+
+---
+
+## 3. Presentation Structure
+
+The project includes ten interactive and educational slides.
+
+| Slide | Title | Main Content |
+|---|---|---|
+| 01 | Welcome to the Future of Fashion | Introduction to artificial intelligence in fashion |
+| 02 | From Sketch to Algorithm | AI-assisted fashion design and image generation |
+| 03 | Can AI Be a Fashion Designer? | Human creativity versus algorithmic design |
+| 04 | Your Personal AI Stylist | AI-based personalization and recommendations |
+| 05 | The Virtual Fitting Room | Virtual try-on technology and its limitations |
+| 06 | Design Your Digital Look | Interactive 3D garment customization |
+| 07 | The Smart Fashion Engine | Python-based recommendation algorithm |
+| 08 | Can AI Make Fashion More Sustainable? | Sustainability and resource efficiency |
+| 09 | The Human Behind the Algorithm | Ethics, responsibility and human judgment |
+| 10 | Your Fashion Future | Personalized digital fashion passport |
+
+### Visual and Educational Design
+
+The presentation was designed in a luxury fashion editorial style, using:
+
+- Ivory and warm neutral backgrounds.
+- Champagne-gold and soft lilac accents.
+- Elegant typography and fashion photography.
+- Spacious layouts inspired by fashion magazines.
+- English editorial titles with Hebrew educational explanations.
+
+The visual approach was chosen to connect the presentation's subject matter with its appearance.
+
+![From Sketch to Algorithm – Slide 2](screenshots/desktop-slide2.png)
+
+---
+
+## 4. Interactive Features
+
+### 4.1 JavaScript Navigation and Interactivity
+
+JavaScript is used throughout the presentation to manage slide navigation and user interactions.
+
+Users can move between slides, interact with interface controls and make selections that influence later parts of the experience.
+
+The project was designed as a connected website rather than a collection of independent static images.
+
+### 4.2 Interactive 3D Fashion Studio — Slide 6
+
+One of the main features is an interactive garment customization studio built with **Three.js**.
+
+The studio displays a three-dimensional garment that users can manipulate.
+
+Users can change:
+
+- Garment color.
+- Fabric appearance.
+- Silhouette and shape.
+
+The object is rendered in real time, allowing users to observe changes directly.
+
+This feature demonstrates the distinction between displaying a static image and interacting with a three-dimensional digital object.
+
+![Interactive Three.js Garment Studio – Slide 6](screenshots/desktop-slide6.png)
+
+### 4.3 Python Fashion Recommendation Engine — Slide 7
+
+The second major technical feature is a fashion recommendation system implemented in Python.
+
+The system receives user preferences, including:
+
+- Personal style.
+- Occasion.
+- Budget.
+- Selected garment color.
+- Fabric.
+- Silhouette.
+
+It then evaluates a small, curated catalog of fashion looks and calculates compatibility scores.
+
+The recommendation algorithm uses four weighted criteria:
+
+| Criterion | Maximum Points |
+|---|---:|
+| Style compatibility | 35 |
+| Occasion and silhouette | 30 |
+| Color and fabric | 20 |
+| Budget alignment | 15 |
+| **Total** | **100** |
+
+The rules are implemented in [`python/recommender.py`](python/recommender.py).
+
+**Important distinction:** This is an educational, rule-based recommendation algorithm. It is not a trained AI model, and its compatibility scores are not scientifically validated measures of personal preference.
+
+The Python implementation demonstrates how programming can be used to evaluate inputs, apply rules and generate personalized output.
+
+### 4.4 Personalized Digital Fashion Passport — Slide 10
+
+The final slide connects the earlier interactive components.
+
+After customizing a garment and receiving a recommendation, users can view a personalized digital fashion passport.
+
+The passport presents information from the user's selections and latest calculated recommendation, including the recommended look and compatibility score.
+
+The purpose of this feature is to demonstrate how multiple interactive components can work together as part of one user experience.
+
+---
+
+## 5. Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Structure of the presentation |
+| CSS3 | Visual design, typography and responsive layout |
+| JavaScript | Slide navigation, controls and interactive logic |
+| Three.js | Interactive three-dimensional garment |
+| Python | Recommendation algorithm and scoring |
+| Pyodide | Attempted browser-based Python execution |
+| Git | Version control |
+| GitHub | Repository and project documentation |
+| GitHub Pages | Public presentation hosting |
+| AI Development Tools | Assistance with planning, code generation, debugging and refinement |
+
+The project combines these technologies to create an interactive educational experience.
+
+---
+
+## 6. How to Run the Project
+
+### Option A — View the Public Presentation
+
+The easiest way to access the project is through GitHub Pages:
+
+**https://hadarAmar.github.io/AI-Fashion-Lab/**
+
+No software installation is required.
+
+To experience the main interactive features:
+
+1. Open the presentation.
+2. Navigate to Slide 6 and customize the digital garment.
+3. Continue to Slide 7, select your preferences and generate a recommendation.
+4. Continue to Slide 10 to view the personalized fashion passport.
+
+**Technical note:** GitHub Pages is a static hosting service. The public website attempts to initialize Pyodide for Python execution in the browser. If initialization fails, the recommendation feature uses a JavaScript implementation of the same scoring rules.
+
+The JavaScript fallback is not equivalent to executing Python.
+
+### Option B — Run the Project with Native Python
+
+To demonstrate the actual Python recommendation engine, download or clone the repository and ensure Python 3 is installed.
+
+Open a terminal in the project directory and run:
 
 ```bash
 python3 server.py
 ```
 
-Open `http://localhost:8000/` in Chrome. Browse to slide 6 to customize the 3D garment and slide 7 to select style, event, and budget and run the Python recommendation. This local preview uses **real native Python** through `server.py` and works without the Pyodide CDN. On a statically hosted site (e.g. GitHub Pages), the page instead attempts **in-browser Pyodide**, which still requires correct CDN loading. This is a local development fallback, not a solution for static deployment. The Three.js vendor file is local. Opening `index.html` with `file://` is also supported for basic page navigation, but an HTTP server is more reliable.
+Then open:
 
-## Testing
+http://localhost:8000/
+
+The local server runs the recommendation logic in Python.
+
+### Run the Automated Tests
+
+The repository also includes Python tests.
+
+Run:
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
-The tests validate distinct fashion recommendations, budget behavior, and invalid input handling. This is a native Python test of the same `python/recommender.py` source embedded for file URL compatibility. These tests do **not** substitute for an actual browser test of the Pyodide CDN and WebGL.
+These tests check selected recommendation scenarios and input handling. They do not replace manual testing of the website's visual layout and browser interactions.
 
-## Accuracy and scope
+---
 
-The fashion engine is an **educational deterministic rule-based scoring example**, not a learned AI model, and does not use actual product inventory or pricing. The virtual fitting overlays on slide 5 are **illustrations**, not real scanning or fit measurements. The 3D garment on slide 6 is a procedural visualization, not a physically accurate virtual fitting simulation.
+## 7. Development Process and Working Method
 
-## Files
+The project was developed through an iterative process involving AI-assisted development, review, feedback and corrections.
 
-- `index.html` – presentation markup and user controls.
-- `css/style.css` – luxury editorial visual design and responsive styling.
-- `js/slider.js` – slide navigation.
-- `js/three-studio.js` – 3D garment, colors, materials, and selection state.
-- `js/python-engine.js` – Pyodide initialization, controls, results, and embedded Python source for local file mode.
-- `python/recommender.py` – authoritative Python implementation of the recommendation logic.
-- `PRD.md` – initial planning and acceptance criteria.
-- `screenshots/` – screenshots captured in earlier iterations.
-- `tests/` – Python scoring checks.
+The initial output was not treated as the final result. Different parts of the project were revised after identifying problems or opportunities for improvement.
 
-## Remaining before academic submission
+### Stage 1 — Planning
 
-- Independently test slide 7 in Chrome **with internet access**, including visibly changing scores for at least two profiles; test both desktop and mobile layouts.
-- Slide 10 is connected to the latest genuine Python recommendation and selected garment (Milestone 4 complete); validate it in the deployed site.
-- Document authentic project prompt iterations in a dedicated `prompts/` folder (do not invent conversation history), with screenshots showing before/after changes.
-- Confirm image licensing/attribution and accuracy of external educational claims.
-- Review `PRD.md` to align any requirements that changed during implementation.
-- Push Git history to an appropriate GitHub repository, follow course-specific sharing and form submission instructions.
+The development began with a Product Requirements Document (PRD).
 
-## Troubleshooting Python startup
+The document defined the concept, target audience, visual style, technical requirements and planned interactive features.
 
-If Pyodide shows `init_fs_encoding` or a Python startup error, stop the existing `python3 -m http.server 8000` process with Ctrl+C, then use `python3 server.py` instead. Open http://localhost:8000/#slide-7 and confirm the badge says `מנוע Python מקומי פעיל`. This uses `python/recommender.py` natively and preserves the genuine Python requirement, but does not demonstrate in-browser Python and requires a Python server. For publishing as static GitHub Pages, resolve Pyodide CDN artifact loading separately.
+[View the original PRD](PRD.md)
 
-## Milestone 4 — Personal Digital Look Passport
+### Stage 2 — Building the Initial Presentation
 
-Slide 10 now reads the latest real Python recommendation from `window.aiFashionLab.recommendation` and the garment/user selections used for that calculation. It displays the recommended look, score, style, occasion, budget, color, silhouette and fabric, plus a styling note. If Python has not calculated a successful result, a clear empty state links back to Slide 7. The print button prints Slide 10. The result is explicitly described as a rule-based educational simulation, not a trained model or an actual fitting measurement.
+The next step was creating the HTML structure, CSS styling and JavaScript navigation.
 
-The changes reside in `index.html`, `css/style.css`, `js/python-engine.js`, and the new `js/passport.js`.
+The initial implementation established the ten-slide structure and the basic editorial visual language.
 
-### Check the integrated experience
+### Stage 3 — Visual Review and Improvements
 
-1. Run `python3 server.py` in the project folder, then open `http://localhost:8000/#slide-6`.
-2. Change the garment color, fabric, or silhouette.
-3. Advance to Slide 7, choose a style, occasion, and budget, and confirm a calculated recommendation appears and the Python status is green.
-4. Advance to Slide 10. Verify that its result (particularly score, style, color, fabric, and silhouette) matches your inputs and the Slide 7 recommendation.
-5. Return to Slide 7, change a preference, and confirm Slide 10 updates accordingly.
-6. Test printing and the restart button.
+During development, the presentation was reviewed and revised.
 
-**Deployment limitation:** `python3 server.py` is required for reliable local Python execution on the current machine. GitHub Pages serves static files only and cannot run this server. The code attempts Pyodide for static hosting but its initialization has failed in the tested setup. Do not claim GitHub Pages supports the Python demo until Pyodide is fixed and actually tested, or use a hosting option with Python server support.
+The main improvements included:
 
-## Authentic development and academic hand-in
+- Reducing unnecessarily dense text.
+- Improving visual hierarchy and spacing.
+- Refining the fashion editorial style.
+- Revising selected images.
+- Adjusting layouts for different screen sizes.
 
-The `prompts/` folder has a concise reconstruction of the instructions and decisions based on the actual work in this chat, **not** a complete verbatim export or claimed CLI transcript. Add actual screenshots/exports of the prompts you sent to Antigravity, your critique and revisions, and a record of collaborative decisions; do not fabricate agent messages. You should also independently verify presentation claims and image licensing. Keep the existing `.git` folder and commits when copying this update into your original project folder. Commit the new Milestone 3 and 4 changes (including Python) before pushing to GitHub so genuine development stages are preserved.
+These changes were intended to improve readability and strengthen the relationship between content and design.
 
+### Stage 4 — Developing the 3D Component
 
-## Passport synchronization fix (v4.2)
+An interactive garment studio was introduced using Three.js.
 
-After the native Python or Pyodide calculation succeeds on slide 7, the actual
-result is held in application state and saved to same-tab `sessionStorage`.
-Slide 10 reads the same result and restores it after a page refresh. No mock
-score is displayed. To test, run `python3 server.py`, visit slide 7, vary
-preferences, then navigate to slide 10. Use a hard reload if an older copy
-was previously cached. Changes to a selection require recalculating on slide 7.
+Instead of presenting a static representation, the garment could be customized through user selections.
 
-## Public demonstration deployment (Python server on Render)
+This added a practical interactive element to the presentation.
 
-The static GitHub Pages fallback is not verified because Pyodide initialization failed in testing.
-For a working public link that runs **real Python on the server**, deploy a **Web Service** on Render:
+### Stage 5 — Implementing the Python Algorithm
 
-1. Commit and push this project to your GitHub repository, preserving the original development history.
-2. On https://dashboard.render.com choose **New → Blueprint**, connect the repository, and apply `render.yaml`; alternatively create a **Web Service** using runtime Python, build command `python3 -m unittest discover -s tests -v`, and start command `python3 server.py`, choosing the Free tier if available.
-3. Render supplies a public `https://...onrender.com` address. Open that address, navigate to Slide 7, and check the badge **מנוע Python מקומי פעיל** (this means native server Python, not Python running on the visitor's device). Test Slide 10 as well.
+The recommendation engine was developed to provide a meaningful use of Python within the project.
 
-The web service reads Render's `PORT` variable and binds to `0.0.0.0` only in hosted mode. Locally `python3 server.py` still uses `127.0.0.1:8000`. The project uses Python's standard library and needs no pip dependencies. Free web services may sleep after inactivity and have resource limits; the first visitor can experience a startup delay.
+During integration, browser-based Python initialization caused technical problems.
 
-**Course transparency:** The project demonstrates genuine Python, but this hosted mode runs Python on a remote server, *not inside the browser*. Do not describe it as in-browser Python unless the Pyodide mode has been separately tested successfully. The original PRD's Pyodide architecture is therefore a documented change.
+A local Python server was used to provide a functioning native Python execution path.
 
-## Free GitHub Pages publication (no Render or payment)
+For the publicly hosted version, a JavaScript fallback was added so the recommendation interface could remain usable if Pyodide failed.
 
-1. Upload the current project files, including `js/static-recommender.js`, to the GitHub repository root.
-2. Repository **Settings → Pages → Build and deployment → Source: Deploy from a branch → main / (root) → Save**.
-3. Public URL: `https://hadarAmar.github.io/AI-Fashion-Lab/`. Wait for the build and test slides 6, 7 and 10.
+This was an architectural compromise, and the two execution methods are documented separately.
 
-**Technical disclosure:** On GitHub Pages the app first attempts genuine in-browser Python using Pyodide from a CDN. If Pyodide fails, the app uses a deterministic JavaScript fallback implementing the same scoring rules from `python/recommender.py`. The UI explicitly labels this mode as JavaScript. Thus a functioning online demo is guaranteed without a paid Python server, but a fallback run does **not** satisfy a strict requirement for executing Python live. Show the local `python3 server.py` version if the professor requires actual Python execution.
+### Stage 6 — Connecting the Interactive Slides
+
+Another development challenge involved transferring the recommendation result to the final slide.
+
+The presentation was revised so that Slide 10 could use the latest calculated recommendation rather than displaying a fixed example.
+
+This helped turn separate demonstrations into a more coherent user experience.
+
+### Stage 7 — GitHub Publication and Documentation
+
+The project was published through GitHub Pages and documented in the repository.
+
+The development history, requirements and prompt-related documentation were retained to show how the project evolved.
+
+---
+
+## 8. My Decisions and Critical Evaluation
+
+The assignment required more than generating a website using AI tools. It required reviewing the output and making decisions about what should be changed.
+
+Several decisions were especially important:
+
+**Choosing an interactive presentation instead of a conventional slide deck**
+
+An interactive format made it possible to demonstrate digital design and personalization through direct user participation.
+
+**Developing a consistent visual identity**
+
+The editorial style was selected to strengthen the connection between fashion and technology.
+
+**Adding user-controlled 3D customization**
+
+The 3D element became an active demonstration rather than a purely decorative animation.
+
+**Connecting the recommendation engine to the final slide**
+
+The personalized passport was introduced to make the interactive features work together.
+
+**Addressing technical failures instead of ignoring them**
+
+The Python initialization problems required investigating different execution methods and acknowledging the limitations of static hosting.
+
+These decisions illustrate the importance of evaluating AI-generated code and making deliberate changes throughout development.
+
+---
+
+## 9. GitHub History and Prompt Documentation
+
+The repository includes supporting files documenting the project's development.
+
+### Project Requirements Document
+
+The original planning document describes the initial project goals and proposed architecture.
+
+**[View PRD.md](PRD.md)**
+
+### Prompt Engineering and Development Log
+
+A separate document summarizes the development process, prompts, technical challenges, corrections and decisions.
+
+**[View Development and Prompt Log](prompts/development-log.md)**
+
+The log includes reconstructed descriptions of some earlier prompts because the complete original agent transcript is not available. These reconstructed entries are identified as such and should not be interpreted as verbatim conversation records.
+
+### Git Development History
+
+The original local Git history was preserved in a separate branch.
+
+**[View Original Development Commits](https://github.com/hadarAmar/AI-Fashion-Lab/commits/development-history)**
+
+The main branch contains the publicly uploaded project and subsequent changes.
+
+**[View Main Branch History](https://github.com/hadarAmar/AI-Fashion-Lab/commits/main)**
+
+The original local commits were uploaded to the separate development-history branch after the public repository had been established.
+
+These records provide evidence of different development stages without presenting them as a sequence of earlier GitHub pushes.
+
+---
+
+## 10. Screenshots and Visual Documentation
+
+The repository includes screenshots from desktop and mobile development stages.
+
+### Editorial Opening
+
+![Presentation Cover](screenshots/desktop-slide1.png)
+
+### Interactive 3D Design
+
+![3D Design Studio](screenshots/desktop-slide6.png)
+
+### Virtual Fitting Technology
+
+![Virtual Fitting Explanation](screenshots/desktop-slide5.png)
+
+### Mobile Interface
+
+[View Mobile Presentation Screenshot](screenshots/mobile-slide1-new.png)
+
+[View Mobile 3D Studio Screenshot](screenshots/mobile-slide6.png)
+
+Some screenshots reflect earlier development versions. The published website should be used to inspect current interactive behavior.
+
+---
+
+## 11. Limitations and Future Improvements
+
+The project demonstrates several technologies, but it also has important limitations.
+
+- The 3D garment is a procedural visualization, not a physically accurate clothing simulation.
+- The virtual fitting content is illustrative and does not perform real body measurements.
+- The recommendation algorithm uses predefined rules rather than a trained machine-learning model.
+- The recommendation catalog is limited and does not contain live product information.
+- Browser-based Python execution may fail, requiring the documented JavaScript fallback.
+- Further browser, mobile and accessibility testing would improve reliability.
+- Externally sourced fashion images and educational claims require careful attribution and verification before broader reuse.
+
+Possible future improvements include a larger recommendation catalog, more advanced garment visualization, more reliable Python execution in the browser and usability testing with real users.
+
+---
+
+## 12. Final Reflection
+
+Developing AI Fashion Lab demonstrated that using artificial intelligence in a creative project involves more than generating content or code.
+
+The process required planning, evaluating results, identifying problems and making changes.
+
+The most valuable part of the experience was learning to treat AI-generated output as a starting point that still requires human judgment.
+
+The project also highlights the relationship between creativity and technology: digital tools can expand what is possible, but they do not remove the need for thoughtful design decisions.
+
+**The main conclusion is that AI can support and accelerate creative work, while responsibility for the final result remains with the person directing the process.**
+
+---
+
+## Project Links
+
+| Resource | Link |
+|---|---|
+| Live Presentation | [AI Fashion Lab](https://hadarAmar.github.io/AI-Fashion-Lab/) |
+| GitHub Repository | [Project Repository](https://github.com/hadarAmar/AI-Fashion-Lab) |
+| Product Requirements Document | [PRD.md](PRD.md) |
+| Development and Prompt Log | [Development Log](prompts/development-log.md) |
+| Python Recommendation Engine | [recommender.py](python/recommender.py) |
+| Python Tests | [test_recommender.py](tests/test_recommender.py) |
+| Original Git Development History | [Development History](https://github.com/hadarAmar/AI-Fashion-Lab/commits/development-history) |
